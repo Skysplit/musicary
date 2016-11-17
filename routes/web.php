@@ -11,4 +11,10 @@
 |
 */
 
-Route::get('/', 'SiteController@index')->name('home');
+// Auth routes
+Route::post('login', 'Auth\LoginController@login')->name('login');
+Route::post('register', 'Auth\RegisterController@register')->name('register');
+
+Route::any('{all?}', function () {
+    return view('layouts.single');
+});

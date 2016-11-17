@@ -12,7 +12,8 @@
         "laravelcollective/html": "^5.3",
         "laravel/socialite": "^2.0",
         "laravel/passport": "^1.0",
-        "socialiteproviders/youtube": "^2.0"
+        "socialiteproviders/youtube": "^2.0",
+        "dingo/api": "1.0.x@dev"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

@@ -168,6 +168,10 @@ return [
          */
 
         SocialiteProviders\Manager\ServiceProvider::class,
+        Dingo\Api\Provider\LaravelServiceProvider::class,
+        Laravel\Passport\PassportServiceProvider::class,
+        Collective\Html\HtmlServiceProvider::class,
+
 
         /*
          * Application Service Providers...
@@ -228,6 +232,8 @@ return [
 
         // Third-party aliases
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+        'Form' => Collective\Html\FormFacade::class,
+        'Html' => Collective\Html\HtmlFacade::class,
     ],
 
 ];

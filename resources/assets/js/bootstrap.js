@@ -1,35 +1,30 @@
 
-window._ = require('lodash');
+// Expose lodash
+window._ = require('lodash')
 
-/**
- * We'll load jQuery and the Bootstrap jQuery plugin which provides support
- * for JavaScript based Bootstrap features such as modals and tabs. This
- * code may be modified to fit the specific needs of your application.
- */
+// Expose jQuery
+window.$ = window.jQuery = require('jquery')
 
-window.$ = window.jQuery = require('jquery');
-require('bootstrap-sass');
+// Import bootstrap (it adds itself to jQuery plugins)
+require('bootstrap-sass')
 
-/**
- * Vue is a modern JavaScript library for building interactive web interfaces
- * using reactive data binding and reusable components. Vue's API is clean
- * and simple, leaving you to focus on building your next great project.
- */
+// Expose vue
+window.Vue = require('vue')
 
-window.Vue = require('vue');
-require('vue-resource');
+// Require vue-resource package (for http requests)
+require('vue-resource')
 
-/**
- * We'll register a HTTP interceptor to attach the "CSRF" header to each of
- * the outgoing requests issued by this application. The CSRF middleware
- * included with Laravel will automatically verify the header's value.
- */
-
+// Intercept http request
 Vue.http.interceptors.push((request, next) => {
-    request.headers.set('X-CSRF-TOKEN', Laravel.csrfToken);
+    // Add csrf token header so
+    request.headers.set('X-CSRF-TOKEN', Laravel.csrfToken)
 
-    next();
-});
+    // Add accept header so we can consume api
+    request.headers.set('Accept', 'application/vnd.musicary.v1+json')
+
+    // Proceed request
+    next()
+})
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
