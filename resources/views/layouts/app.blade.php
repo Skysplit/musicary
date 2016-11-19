@@ -9,18 +9,13 @@
                 csrfToken: "{{ csrf_token() }}"
             }
         </script>
+        @stack('styles')
     </head>
     <body>
         <div id="app">
-            <div class="container">
-                <div v-if="appReady">
-                    <router-view></router-view>
-                </div>
-                <div v-else>
-                    Page loading
-                </div>
-            </div>
+            @yield('content')
         </div>
         <script src="{!! asset('js/app.js') !!}"></script>
+        @stack('scripts')
     </body>
 </html>

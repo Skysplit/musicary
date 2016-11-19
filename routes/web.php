@@ -12,9 +12,7 @@
 */
 
 // Auth routes
-Route::post('login', 'Auth\LoginController@login')->name('login');
-Route::post('register', 'Auth\RegisterController@register')->name('register');
+Auth::routes();
 
-Route::any('{all?}', function () {
-    return view('layouts.single');
-});
+// Site routes
+Route::any('/', 'SiteController@index')->name('home');

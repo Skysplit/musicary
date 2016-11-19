@@ -6,6 +6,6 @@ class SiteController extends Controller
 {
     public function index()
     {
-        return view('layouts.single');
+        return view('site.index');
     }
 }

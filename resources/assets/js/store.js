@@ -5,17 +5,9 @@ module.exports = new Vuex.Store({
         ready: false,
         csrfToken: window.Laravel.csrfToken,
     },
-    getters: {
-        auth(state) {
-            return state.auth || null;
-        }
-    },
-    mutations: {
-        login(state, data) {
-            state.auth = data.user;
-        },
-        logout(state) {
-            state.auth = null;
+    mutators: {
+        ready(state) {
+            state.ready = true
         }
     }
 })

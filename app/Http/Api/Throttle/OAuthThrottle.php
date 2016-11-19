@@ -5,6 +5,11 @@ namespace App\Http\Api\Throttle;
 use Dingo\Api\Http\RateLimit\Throttle\Throttle;
 use Illuminate\Container\Container;
 
+/**
+ * Custom app throttle.
+ * It matches only requests made using OAuth tokens.
+ * First party tokens are not limited
+ */
 class OAuthThrottle extends Throttle
 {
     /**
@@ -25,8 +30,6 @@ class OAuthThrottle extends Throttle
         /** \Laravel\Passport\Token|\Laravel\Passport\TransientToken $token */
         $token = $user->token();
 
-        $token->transient();
-
         // Check if token has client relation
         // If it does not, then it's safe to use it without throttling
         if ($token->transient()) {
@@ -38,7 +41,6 @@ class OAuthThrottle extends Throttle
         if ($token->client->firstParty()) {
             return false;
         }
-
 
         // Throttle request
         return true;
