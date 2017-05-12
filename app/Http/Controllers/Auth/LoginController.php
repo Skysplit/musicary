@@ -3,10 +3,14 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Transformers\UserTransformer;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\RedirectResponse;
+use League\Fractal\Serializer\JsonApiSerializer;
+use Spatie\Fractal\Fractal;
+use Illuminate\Contracts\Auth\Factory as AuthManager;
 
 class LoginController extends Controller
 {
@@ -21,10 +25,7 @@ class LoginController extends Controller
     |
     */
 
-    use AuthenticatesUsers {
-        sendFailedLoginResponse as sendFailedLoginResponseTrait;
-        sendLockoutResponse as sendLockoutResponseTrait;
-    }
+    use AuthenticatesUsers;
 
     /**
      * Where to redirect users after login.
@@ -34,12 +35,19 @@ class LoginController extends Controller
     protected $redirectTo = '/home';
 
     /**
+     * @var AuthManager
+     */
+    protected $auth;
+
+    /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(AuthManager $auth)
     {
+        $this->auth = $auth;
+
         $this->middleware('guest', ['except' => 'logout']);
     }
 
@@ -48,46 +56,31 @@ class LoginController extends Controller
      */
     protected function authenticated(Request $request, $user)
     {
-        if ($request->wantsJson()) {
-            return [
-                'success' => true,
-                'token' => csrf_token(),
-                'user' => $user,
-                'redirectTo' => $this->redirectPath(),
-            ];
-        }
+        return Fractal::create()
+            ->item($user)
+            ->transformWith(new UserTransformer)
+            ->serializeWith(new JsonApiSerializer)
+            ->respond(201);
     }
 
     /**
-     * @param Request $request
-     *
-     * @return \Illuminate\Http\RedirectResponse|JsonResponse
+     * @inheritDoc
      */
     protected function sendFailedLoginResponse(Request $request)
     {
-        $response = $this->sendFailedLoginResponseTrait($request);
+        $response = parent::sendFailedLoginResponse($request);
 
-        if ($request->wantsJson()) {
-            return $this->sendJsonResponse($response);
-        }
-
-        return $response;
+        return $this->sendJsonResponse($response);
     }
 
     /**
-     * @param Request $request
-     *
-     * @return \Illuminate\Http\RedirectResponse|JsonResponse
+     * @inheritDoc
      */
     protected function sendLockoutResponse(Request $request)
     {
-        $response = $this->sendLockoutResponseTrait($request);
+        $response = parent::sendLockoutResponse($request);
 
-        if ($request->wantsJson()) {
-            return $this->sendJsonResponse($response);
-        }
-
-        return $response;
+        return $this->sendJsonResponse($response);
     }
 
     /**
@@ -97,9 +90,18 @@ class LoginController extends Controller
      */
     protected function sendJsonResponse(RedirectResponse $response)
     {
-        return new JsonResponse(
-            $response->getSession()->get('errors')->getBag('default')->getMessages(),
-            422
-        );
+        $response = [
+            'errors' => $response->getSession()->get('errors')->getBag('default')->getMessages(),
+        ];
+
+        return new JsonResponse($response, 422);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    protected function guard()
+    {
+        return $this->auth->guard();
     }
 }

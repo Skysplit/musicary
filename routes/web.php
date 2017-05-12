@@ -12,7 +12,9 @@
 */
 
 // Auth routes
-Auth::routes();
+Route::group(['prefix' => 'api/auth'], function () {
+    Auth::routes();
+});
 
 // Site routes
-Route::any('/', 'SiteController@index')->name('home');
+Route::any('{any?}', 'SiteController@index');

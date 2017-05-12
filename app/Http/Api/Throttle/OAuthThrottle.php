@@ -12,6 +12,7 @@ use Illuminate\Container\Container;
  */
 class OAuthThrottle extends Throttle
 {
+
     /**
      * {@inheritdoc}
      */
