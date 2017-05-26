@@ -36,7 +36,7 @@ ShallowWrapper {
       "_calledComponentWillUnmount": false,
       "_compositeType": 2,
       "_context": Object {},
-      "_currentElement": <Unknown
+      "_currentElement": <Routes
         history={Object {}}
 />,
       "_debugID": 1,
@@ -100,7 +100,7 @@ ShallowWrapper {
     "render": [Function],
   },
   "root": [Circular],
-  "unrendered": <Unknown
+  "unrendered": <Routes
     history={Object {}}
 />,
 }
