@@ -1,6 +1,7 @@
 require('dotenv').config();
 
 const { mix } = require('laravel-mix');
+const { parse } = require('url');
 
 /*
  |--------------------------------------------------------------------------
@@ -14,7 +15,7 @@ const { mix } = require('laravel-mix');
  */
 
 mix
-  .react('resources/assets/js/app.js', 'public/js')
+  .react('resources/assets/js/index.js', 'public/js')
   .extract([
     'react',
     'prop-types',
@@ -25,4 +26,15 @@ mix
     'react-router',
     'react-router-redux',
   ])
-  .sass('resources/assets/sass/app.scss', 'public/css');
+  .sass('resources/assets/sass/app.scss', 'public/css')
+  .browserSync({
+    proxy: {
+      target: parse(process.env.APP_URL).host || 'homestead.app',
+      reqHeaders() {
+        return {
+          host: 'localhost:3000',
+        };
+      },
+    },
+  })
+  .disableNotifications();
