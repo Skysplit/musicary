@@ -8,11 +8,10 @@ use Illuminate\Container\Container;
 /**
  * Custom app throttle.
  * It matches only requests made using OAuth tokens.
- * First party tokens are not limited
+ * First party tokens are not limited.
  */
 class OAuthThrottle extends Throttle
 {
-
     /**
      * {@inheritdoc}
      */

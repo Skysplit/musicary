@@ -1,0 +1,32 @@
+<?php
+
+use PhpCsFixer\Config;
+use PhpCsFixer\Finder;
+
+$finder = Finder::create()
+    ->exclude([
+        'resources/assets/',
+        'node_modules/',
+        'vendor/',
+    ]);
+
+return Config::create()
+    ->setIndent('    ')
+    ->setLineEnding("\n")
+    ->setFinder($finder)
+    ->setRules([
+        '@PSR2' => true,
+        '@Symfony' => true,
+        '@PHP71Migration' => true,
+        'array_syntax' => ['syntax' => 'short'],
+        'combine_consecutive_unsets' => true,
+        'concat_space' => ['spacing' => 'one'],
+        'list_syntax' => ['syntax' => 'short'],
+        'no_useless_else' => true,
+        'no_useless_return' => true,
+        'not_operator_with_successor_space' => true,
+        'ordered_imports' => true,
+        'semicolon_after_instruction' => true,
+        'phpdoc_add_missing_param_annotation' => true,
+        'phpdoc_order' => true,
+    ]);

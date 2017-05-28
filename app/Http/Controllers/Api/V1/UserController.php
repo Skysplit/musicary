@@ -12,7 +12,7 @@ class UserController extends Controller
     use Helpers;
 
     /**
-     * Show current user data
+     * Show current user data.
      *
      * @param Request $request
      */
@@ -20,7 +20,7 @@ class UserController extends Controller
     {
         return $this->response->item(
             $request->user(),
-            new UserTransformer
+            new UserTransformer()
         );
     }
 }
