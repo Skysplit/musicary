@@ -18,7 +18,7 @@ cache:
 
 before_script:
   - if [[ ${NODE_ENABLED} == "true" ]]; then nvm install $(cat .nvmrc) && nvm use $(cat .nvmrc) && npm i -g yarn && yarn; fi
-  - if [[ ${PHP_ENABLED} == "true" ]]; then composer install --dev; fi
+  - if [[ ${PHP_ENABLED} == "true" ]]; then composer install --dev --no-interaction && cp .env.example .env && php artisan key:generate; fi
 
 script: bash -c "${TEST_SUITE}"
 
