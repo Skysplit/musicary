@@ -4,7 +4,16 @@
 
 # Installation
 
-> To be done
+Copy `.env.example` to `.env` and set up your environment variables
+
+```bash
+$ composer install
+$ yarn
+$ php artisan migrate
+$ php artisan passport:install
+$ php artisan db:seed
+$ yarn production
+```
 
 # Used technologies
 
