@@ -14,9 +14,7 @@ ShallowWrapper {
     <Route
         component={[Function]}
         path="/"
-    >
-        <Route />
-    </Route>
+    />
 </ConnectedRouter>,
   "nodes": Array [
     <ConnectedRouter
@@ -25,9 +23,7 @@ ShallowWrapper {
       <Route
             component={[Function]}
             path="/"
-      >
-            <Route />
-      </Route>
+      />
 </ConnectedRouter>,
   ],
   "options": Object {},
@@ -74,9 +70,7 @@ ShallowWrapper {
           <Route
                     component={[Function]}
                     path="/"
-          >
-                    <Route />
-          </Route>
+          />
 </ConnectedRouter>,
         "_debugID": 2,
         "_renderedOutput": <ConnectedRouter
@@ -85,9 +79,7 @@ ShallowWrapper {
           <Route
                     component={[Function]}
                     path="/"
-          >
-                    <Route />
-          </Route>
+          />
 </ConnectedRouter>,
       },
       "_renderedNodeType": 1,

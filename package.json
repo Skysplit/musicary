@@ -50,7 +50,8 @@
   },
   "jest": {
     "setupFiles": [
-      "<rootDir>/resources/assets/js/setup/buildSetup.js"
+      "<rootDir>/resources/assets/js/setup/buildSetup.js",
+      "<rootDir>/resources/assets/js/setup/Laravel.js"
     ]
   }
 }

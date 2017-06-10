@@ -8,13 +8,125 @@ ShallowWrapper {
     "findWhereUnwrapped": [Function],
   },
   "length": 1,
-  "node": <div>
-    Test site
-</div>,
+  "node": <NavigationDrawer
+    autoclose={true}
+    constantDrawerType={false}
+    contentComponent="main"
+    contentId="main-content"
+    defaultMedia="mobile"
+    desktopDrawerType="full-height"
+    desktopMinWidth={1025}
+    drawerTitle="AppName"
+    drawerTransitionDuration={300}
+    extractMini={true}
+    includeDrawerHeader={true}
+    jumpLabel="Jump to content"
+    mobileDrawerType="temporary"
+    mobileMinWidth={320}
+    persistentIconChildren="arrow_back"
+    position="left"
+    tabletDrawerType="temporary"
+    tabletMinWidth={768}
+    temporaryIconChildren="menu"
+    toolbarActions={
+        Array [
+            <ButtonTooltipedInked
+              component={[Function]}
+              icon={true}
+              inkTransitionEnterTimeout={450}
+              inkTransitionLeaveTimeout={300}
+              inkTransitionOverlap={150}
+              tooltipLabel="Join AppName!"
+        >
+              person_add
+        </ButtonTooltipedInked>,
+            <ButtonTooltipedInked
+              component={[Function]}
+              icon={true}
+              inkTransitionEnterTimeout={450}
+              inkTransitionLeaveTimeout={300}
+              inkTransitionOverlap={150}
+              tooltipLabel="Sign in"
+        >
+              account_circle
+        </ButtonTooltipedInked>,
+          ]
+    }
+    toolbarThemeType="colored"
+    transitionEnterTimeout={300}
+    transitionName="md-cross-fade"
+>
+    <Route
+        component={[Function]}
+        exact={true}
+        path="/"
+    />
+    <Route
+        component={[Function]}
+        exact={true}
+        path="/login"
+    />
+</NavigationDrawer>,
   "nodes": Array [
-    <div>
-      Test site
-</div>,
+    <NavigationDrawer
+      autoclose={true}
+      constantDrawerType={false}
+      contentComponent="main"
+      contentId="main-content"
+      defaultMedia="mobile"
+      desktopDrawerType="full-height"
+      desktopMinWidth={1025}
+      drawerTitle="AppName"
+      drawerTransitionDuration={300}
+      extractMini={true}
+      includeDrawerHeader={true}
+      jumpLabel="Jump to content"
+      mobileDrawerType="temporary"
+      mobileMinWidth={320}
+      persistentIconChildren="arrow_back"
+      position="left"
+      tabletDrawerType="temporary"
+      tabletMinWidth={768}
+      temporaryIconChildren="menu"
+      toolbarActions={
+            Array [
+                  <ButtonTooltipedInked
+                    component={[Function]}
+                    icon={true}
+                    inkTransitionEnterTimeout={450}
+                    inkTransitionLeaveTimeout={300}
+                    inkTransitionOverlap={150}
+                    tooltipLabel="Join AppName!"
+            >
+                    person_add
+            </ButtonTooltipedInked>,
+                  <ButtonTooltipedInked
+                    component={[Function]}
+                    icon={true}
+                    inkTransitionEnterTimeout={450}
+                    inkTransitionLeaveTimeout={300}
+                    inkTransitionOverlap={150}
+                    tooltipLabel="Sign in"
+            >
+                    account_circle
+            </ButtonTooltipedInked>,
+                ]
+      }
+      toolbarThemeType="colored"
+      transitionEnterTimeout={300}
+      transitionName="md-cross-fade"
+>
+      <Route
+            component={[Function]}
+            exact={true}
+            path="/"
+      />
+      <Route
+            component={[Function]}
+            exact={true}
+            path="/login"
+      />
+</NavigationDrawer>,
   ],
   "options": Object {},
   "renderer": ReactShallowRenderer {
@@ -29,8 +141,10 @@ ShallowWrapper {
       "_instance": App {
         "_reactInternalInstance": [Circular],
         "context": Object {},
+        "getDrawerOptions": [Function],
         "props": Object {},
         "refs": Object {},
+        "renderLink": [Function],
         "state": null,
         "updater": Object {
           "enqueueCallback": [Function],
@@ -50,15 +164,127 @@ ShallowWrapper {
       "_pendingReplaceState": false,
       "_pendingStateQueue": null,
       "_renderedComponent": NoopInternalComponent {
-        "_currentElement": <div>
-          Test site
-</div>,
+        "_currentElement": <NavigationDrawer
+          autoclose={true}
+          constantDrawerType={false}
+          contentComponent="main"
+          contentId="main-content"
+          defaultMedia="mobile"
+          desktopDrawerType="full-height"
+          desktopMinWidth={1025}
+          drawerTitle="AppName"
+          drawerTransitionDuration={300}
+          extractMini={true}
+          includeDrawerHeader={true}
+          jumpLabel="Jump to content"
+          mobileDrawerType="temporary"
+          mobileMinWidth={320}
+          persistentIconChildren="arrow_back"
+          position="left"
+          tabletDrawerType="temporary"
+          tabletMinWidth={768}
+          temporaryIconChildren="menu"
+          toolbarActions={
+                    Array [
+                              <ButtonTooltipedInked
+                                component={[Function]}
+                                icon={true}
+                                inkTransitionEnterTimeout={450}
+                                inkTransitionLeaveTimeout={300}
+                                inkTransitionOverlap={150}
+                                tooltipLabel="Join AppName!"
+                    >
+                                person_add
+                    </ButtonTooltipedInked>,
+                              <ButtonTooltipedInked
+                                component={[Function]}
+                                icon={true}
+                                inkTransitionEnterTimeout={450}
+                                inkTransitionLeaveTimeout={300}
+                                inkTransitionOverlap={150}
+                                tooltipLabel="Sign in"
+                    >
+                                account_circle
+                    </ButtonTooltipedInked>,
+                            ]
+          }
+          toolbarThemeType="colored"
+          transitionEnterTimeout={300}
+          transitionName="md-cross-fade"
+>
+          <Route
+                    component={[Function]}
+                    exact={true}
+                    path="/"
+          />
+          <Route
+                    component={[Function]}
+                    exact={true}
+                    path="/login"
+          />
+</NavigationDrawer>,
         "_debugID": 2,
-        "_renderedOutput": <div>
-          Test site
-</div>,
+        "_renderedOutput": <NavigationDrawer
+          autoclose={true}
+          constantDrawerType={false}
+          contentComponent="main"
+          contentId="main-content"
+          defaultMedia="mobile"
+          desktopDrawerType="full-height"
+          desktopMinWidth={1025}
+          drawerTitle="AppName"
+          drawerTransitionDuration={300}
+          extractMini={true}
+          includeDrawerHeader={true}
+          jumpLabel="Jump to content"
+          mobileDrawerType="temporary"
+          mobileMinWidth={320}
+          persistentIconChildren="arrow_back"
+          position="left"
+          tabletDrawerType="temporary"
+          tabletMinWidth={768}
+          temporaryIconChildren="menu"
+          toolbarActions={
+                    Array [
+                              <ButtonTooltipedInked
+                                component={[Function]}
+                                icon={true}
+                                inkTransitionEnterTimeout={450}
+                                inkTransitionLeaveTimeout={300}
+                                inkTransitionOverlap={150}
+                                tooltipLabel="Join AppName!"
+                    >
+                                person_add
+                    </ButtonTooltipedInked>,
+                              <ButtonTooltipedInked
+                                component={[Function]}
+                                icon={true}
+                                inkTransitionEnterTimeout={450}
+                                inkTransitionLeaveTimeout={300}
+                                inkTransitionOverlap={150}
+                                tooltipLabel="Sign in"
+                    >
+                                account_circle
+                    </ButtonTooltipedInked>,
+                            ]
+          }
+          toolbarThemeType="colored"
+          transitionEnterTimeout={300}
+          transitionName="md-cross-fade"
+>
+          <Route
+                    component={[Function]}
+                    exact={true}
+                    path="/"
+          />
+          <Route
+                    component={[Function]}
+                    exact={true}
+                    path="/login"
+          />
+</NavigationDrawer>,
       },
-      "_renderedNodeType": 0,
+      "_renderedNodeType": 1,
       "_rootNodeID": 0,
       "_topLevelWrapper": null,
       "_updateBatchNumber": null,
