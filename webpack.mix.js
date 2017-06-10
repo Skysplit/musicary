@@ -28,6 +28,7 @@ mix
   ])
   .sass('resources/assets/sass/app.scss', 'public/css')
   .browserSync({
+    notify: false,
     proxy: {
       target: parse(process.env.APP_URL).host || 'homestead.app',
       reqHeaders() {

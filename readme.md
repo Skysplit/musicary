@@ -2,6 +2,14 @@
 
 [![Build Status](https://travis-ci.org/Skysplit/musicary.svg?branch=master)](https://travis-ci.org/Skysplit/musicary)
 
+# Requirements
+
+- PHP 7.1
+- Composer
+- Laravel framework requirements
+- Node 6+
+- npm 5.0.0+
+
 # Installation
 
 Copy `.env.example` to `.env` and set up your environment variables
@@ -18,17 +26,18 @@ $ yarn production
 # Used technologies
 
 - PHP 7.1
-- Laravel 5.4 framework
 - Redis
 - NodeJS
-- MySQL-compliant database (MariadB)
+- MySQL-compliant database (e.g. MariadB)
 
 ### Development technologies
-- ES6 + BabelJS transpiler
+
+- BabelJS with **ES2015**, **React** and **stage0** presents
 - SASS
 
-### Used libraries
+### Used libraries/frameworks
 
+- Laravel 5.4 framework
 - Dingo API
 - Laravel Echo Server
 - Socket.IO

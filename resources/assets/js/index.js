@@ -1,9 +1,10 @@
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import createHistory from 'history/createBrowserHistory';
 
-import Routes from './components/Routes';
+import { Routes } from './components';
 import configureStore from './store/configureStore';
 
 const history = createHistory();

@@ -3,13 +3,11 @@ import PropTypes from 'prop-types';
 import { Route } from 'react-router';
 import { ConnectedRouter } from 'react-router-redux';
 
-import App from '../components/App';
+import { App } from '../components';
 
 export const Routes = ({ history }) => (
   <ConnectedRouter history={history}>
-    <Route path="/" component={App}>
-      <Route></Route>
-    </Route>
+    <Route path="/" component={App} />
   </ConnectedRouter>
 );
 

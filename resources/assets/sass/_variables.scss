@@ -1,32 +1,5 @@
 
-// Body
-$body-bg: #fff;
+@import "~react-md/src/scss/globals";
 
-// Brands
-$brand-primary: #3097d1;
-$brand-info: #8eb4cb;
-$brand-success: #2ab27b;
-$brand-warning: #cbb956;
-$brand-danger: #bf5329;
-
-// Typography
-$font-family-sans-serif: "Open Sans", sans-serif;
-$font-size-base: 14px;
-$line-height-base: 1.6;
-$text-color: #636b6f;
-
-// Navbar
-$navbar-default-bg: #fff;
-
-// Buttons
-$btn-default-color: $text-color;
-
-// Inputs
-$input-border: lighten($text-color, 40%);
-$input-border-focus: lighten($brand-primary, 25%);
-$input-color-placeholder: lighten($text-color, 30%);
-
-// Panels
-$panel-default-heading-bg: #fff;
-
-@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap/variables";
+$md-primary-color: $md-pink-400;
+$md-secondary-color: $md-blue-400;
