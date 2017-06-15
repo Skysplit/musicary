@@ -4,13 +4,13 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Transformers\UserTransformer;
-use Illuminate\Http\Request;
-use Illuminate\Http\JsonResponse;
+use Illuminate\Contracts\Auth\Factory as AuthManager;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use League\Fractal\Serializer\JsonApiSerializer;
 use Spatie\Fractal\Fractal;
-use Illuminate\Contracts\Auth\Factory as AuthManager;
 
 class LoginController extends Controller
 {
@@ -41,8 +41,6 @@ class LoginController extends Controller
 
     /**
      * Create a new controller instance.
-     *
-     * @return void
      */
     public function __construct(AuthManager $auth)
     {
@@ -58,47 +56,13 @@ class LoginController extends Controller
     {
         return Fractal::create()
             ->item($user)
-            ->transformWith(new UserTransformer)
-            ->serializeWith(new JsonApiSerializer)
+            ->transformWith(new UserTransformer())
+            ->serializeWith(new JsonApiSerializer())
             ->respond(201);
     }
 
     /**
-     * @inheritDoc
-     */
-    protected function sendFailedLoginResponse(Request $request)
-    {
-        $response = parent::sendFailedLoginResponse($request);
-
-        return $this->sendJsonResponse($response);
-    }
-
-    /**
-     * @inheritDoc
-     */
-    protected function sendLockoutResponse(Request $request)
-    {
-        $response = parent::sendLockoutResponse($request);
-
-        return $this->sendJsonResponse($response);
-    }
-
-    /**
-     * @param RedirectResponse $response
-     *
-     * @return \Illuminate\Http\RedirectResponse|JsonResponse
-     */
-    protected function sendJsonResponse(RedirectResponse $response)
-    {
-        $response = [
-            'errors' => $response->getSession()->get('errors')->getBag('default')->getMessages(),
-        ];
-
-        return new JsonResponse($response, 422);
-    }
-
-    /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     protected function guard()
     {

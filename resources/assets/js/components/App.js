@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import { Route } from 'react-router';
 import { Link } from 'react-router-dom';
 
@@ -12,7 +15,18 @@ import {
   Login,
 } from './';
 
+import { getUser } from '../store/user/actions';
+
 export class App extends Component {
+  static propTypes = {
+    user: PropTypes.object.isRequired,
+    getUser: PropTypes.func.isRequired,
+  }
+
+  componentWillMount() {
+    this.props.getUser();
+  }
+
   getDrawerOptions = () => {
     const { FULL_HEIGHT, TEMPORARY } = NavigationDrawer.DrawerTypes;
 
@@ -42,4 +56,12 @@ export class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = ({ user }) => ({
+  user,
+});
+
+const mapDispatchToProps = dispatch => bindActionCreators({
+  getUser,
+}, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

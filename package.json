@@ -22,6 +22,7 @@
     "jest-cli": "^20.0.4",
     "laravel-mix": "0.*",
     "lodash": "^4.17.4",
+    "normalize.css": "^7.0.0",
     "prop-types": "^15.5.9",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
@@ -32,7 +33,10 @@
     "react-router-redux": "^5.0.0",
     "redux": "^3.6.0",
     "redux-form": "^6.7.0",
-    "redux-thunk": "^2.2.0"
+    "redux-observable": "^0.14.1",
+    "redux-thunk": "^2.2.0",
+    "reselect": "^3.0.1",
+    "rxjs": "^5.4.1"
   },
   "devDependencies": {
     "babel-eslint": "^7.2.3",

@@ -10,10 +10,10 @@ export const LoginForm = ({
 }) => (
   <form onSubmit={handleSubmit}>
     <div>
-      <Field name="email" component={TextField} type="text" />
+      <Field name="email" label="email" component={TextField} type="text" />
     </div>
     <div>
-      <Field name="password" component="input" type="password" />
+      <Field name="password" label="password" component={TextField} type="password" />
     </div>
     <div>
       <Button type="submit" label="Sign in" primary raised />

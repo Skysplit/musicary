@@ -1,22 +1,38 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { Card, Paper } from 'react-md';
 
 import LoginForm from './LoginForm';
+import { login as attemptLogin } from '../../store/user/actions';
 
 export class Login extends Component {
-  onSubmit = (values, dispatch, props) => {
-    console.log(values);
-    console.log(values);
-    console.log(props);
+  static propTypes = {
+    attemptLogin: PropTypes.func.isRequired,
+  }
+
+  onSubmit = (values) => {
+    const { email, password } = values;
+    return this.props.attemptLogin(email, password);
   }
 
   render() {
     return (
       <div>
-        <LoginForm onSubmit={this.onSubmit} />
+        <h1>Log in</h1>
+        <Paper component={Card} zDepth={1} className="md-grid">
+          <LoginForm onSubmit={this.onSubmit} />
+        </Paper>
       </div>
     );
   }
-
 }
 
-export default Login;
+const mapStateToProps = () => ({});
+
+const mapDispatchToProps = dispatch => bindActionCreators({
+  attemptLogin,
+}, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
