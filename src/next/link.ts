@@ -1,3 +1,5 @@
 import router from './router';
 
-export default router.Link;
+const Link = router.Link;
+
+export default Link;
