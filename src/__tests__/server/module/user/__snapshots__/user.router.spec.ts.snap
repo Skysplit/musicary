@@ -1,18 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`/users /login#POST when no credentials are provided should display missing credentials 1`] = `
+exports[`/api/users POST /login when no credentials are provided should display missing credentials 1`] = `
 Object {
   "message": "Missing credentials",
 }
 `;
 
-exports[`/users /login#POST when wrong email is provided should display wrong credentials 1`] = `
+exports[`/api/users POST /login when wrong email is provided should display wrong credentials 1`] = `
 Object {
   "message": "Incorrect credentials",
 }
 `;
 
-exports[`/users /login#POST when wrong password is provided should display wrong credentials 1`] = `
+exports[`/api/users POST /login when wrong password is provided should display wrong credentials 1`] = `
 Object {
   "message": "Incorrect credentials",
 }

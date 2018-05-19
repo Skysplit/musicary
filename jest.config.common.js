@@ -1,12 +1,13 @@
 module.exports = {
-  testEnvironment: 'node',
-  moduleFileExtensions: ['js', 'ts'],
+  globals: {
+    'ts-jest': {
+      tsConfigFile: './tsconfig.build.json',
+    },
+  },
+  moduleFileExtensions: ['js', 'ts', 'jsx', 'tsx'],
   transform: {
     '^.+\\.tsx?$': './node_modules/ts-jest/preprocessor.js',
   },
-  testMatch: [
-    '**/*.(test|spec).(ts|js)',
-  ],
   moduleNameMapper: {
     '@app/(.*)$': '<rootDir>/src/$1',
     '@server/(.*)$': '<rootDir>/src/server/$1',
@@ -22,5 +23,4 @@ module.exports = {
     '!src/{bootstrap,next}/**/*',
     '!{ormconfig,next.config}.js',
   ],
-  setupTestFrameworkScriptFile: './src/__tests__/__setup.ts'
 }

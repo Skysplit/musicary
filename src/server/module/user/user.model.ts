@@ -14,7 +14,7 @@ import Playlist from '@server/module/playlist/playlist.model';
 export interface UserInterface {
   id: number;
   email: string;
-  password: string;
+  password?: string;
   createdAt: Date;
   updatedAt: Date;
 }

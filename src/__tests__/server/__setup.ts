@@ -14,4 +14,3 @@ beforeAll(async () => {
   await connection.dropDatabase();
   await connection.runMigrations({ transaction: true });
 });
-

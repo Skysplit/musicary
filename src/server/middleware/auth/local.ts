@@ -39,11 +39,15 @@ const local: RequestHandler = (req, res, next) => (
 
     if (!user) {
       return res.status(422).json({
-        message: get(info, 'message', 'Incorrect credentials'),
+        errors: {
+          email: get(info, 'message', 'Incorrect credentials'),
+          password: get(info, 'message', 'Incorrect credentials'),
+        },
       });
     }
 
     return res.json({
+      user,
       success: true,
       token: createJWT(user.toJSON()),
     });

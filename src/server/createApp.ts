@@ -1,6 +1,5 @@
 import express from 'express';
 import { urlencoded, json } from 'body-parser';
-import compression from 'compression';
 import cookieParser from 'cookie-parser';
 import passport from 'passport';
 import routes from './routes';
@@ -12,7 +11,6 @@ const createApp = () => {
   app.disable('x-powered-by');
 
   // Global middleware
-  app.use(compression());
   app.use(cookieParser());
   app.use(json());
   app.use(urlencoded({ extended: true }));
