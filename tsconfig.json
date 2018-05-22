@@ -17,10 +17,10 @@
     "baseUrl": ".",
     "outDir": "./dist",
     "paths": {
-      "@app/*": ["./src/*"],
       "@server/*": ["./src/server/*"],
       "@client/*": ["./src/client/*"],
-      "@next/*": ["./src/next/*"]
+      "@next/*": ["./src/next/*"],
+      "@app/*": ["./src/*"]
     }
   },
   "include": [

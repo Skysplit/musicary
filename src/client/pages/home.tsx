@@ -1,18 +1,15 @@
 import React, { Component, Fragment } from 'react';
-import Link from '@next/link';
 
-export class IndexPage extends Component {
+export default class IndexPage extends Component {
+  static async getInitialProps() {
+    return { title: 'Homepage' };
+  }
+
   render() {
     return (
       <Fragment>
-        <h1>Hello world</h1>
-
-        <Link route="login">
-          <a>Login page</a>
-        </Link>
+        <h1>Welcome to musicary</h1>
       </Fragment>
     );
   }
 }
-
-export default IndexPage;

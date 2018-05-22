@@ -37,8 +37,10 @@ export default class User extends BaseEntity implements UserInterface {
   @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   updatedAt: Date;
 
-  @OneToMany(type => Playlist, playlist => playlist.user)
-  playlists: Playlist[];
+  @OneToMany(type => Playlist, playlist => playlist.user, {
+    lazy: true,
+  })
+  playlists: Promise<Playlist[]>;
 
   @BeforeUpdate()
   updateUpdatedAt() {

@@ -1,9 +1,9 @@
 import { bindActionCreators } from 'redux';
 import { connect, Dispatch } from 'react-redux';
-import WithUser from '@app/client/components/WithUser';
-import { getUser, getIsUserLoading } from '@app/client/store/user/selectors';
-import { State } from '@app/client/store';
-import { fetchUser } from '@app/client/store/user/operations';
+import { getUser, getIsUserLoading } from '@client/store/user/selectors';
+import { fetchUser } from '@client/store/user/operations';
+import { State } from '@client/store';
+import WithUser from '@client/components/WithUser';
 
 const mapStateToProps = (state: State) => ({
   isUserLoading: getIsUserLoading(state),

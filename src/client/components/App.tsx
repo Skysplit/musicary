@@ -1,28 +1,54 @@
 import React, { PureComponent } from 'react';
 import ListItemLink from '@app/client/components/ListItemLink';
-import { UserInterface } from '@app/server/module/user/user.model';
+import { UserInterface } from '@client/store/user';
 import { NavigationDrawer, ListItem } from 'react-md';
 import { AppContainerProps } from '@app/client/containers/AppContainer';
+import { removeUser } from '@app/client/utils/userData';
 
 export interface AppProps extends AppContainerProps {
   user: UserInterface;
 }
 
 export default class App extends PureComponent<AppProps> {
-  userItems() {
+  private logout = () => {
+    removeUser();
+    this.props.logout();
+    this.props.router.push('/');
+  }
+
+  private guestItems() {
     return [
-      <ListItem key="login" component={ListItemLink} route="login" primaryText="Login" />,
-      <ListItem key="signup" primaryText="Sign up" />,
+      <ListItem
+        key="login"
+        component={ListItemLink}
+        route="login"
+        primaryText="Login"
+      />,
+
+      <ListItem
+        key="signup"
+        primaryText="Sign up"
+      />,
     ];
   }
 
-  guestItems() {
+  private userItems() {
     return [
-      <ListItem primaryText="Log out" />,
+      <ListItem
+      key="playlists"
+      primaryText="My playlists"
+      component={ListItemLink}
+      route="playlists"
+      />,
+      <ListItem
+        key="logout"
+        primaryText="Log out"
+        onClick={this.logout}
+      />,
     ];
   }
 
-  items() {
+  private items() {
     if (this.props.user) {
       return this.userItems();
     }
@@ -40,7 +66,12 @@ export default class App extends PureComponent<AppProps> {
         drawerHeader={false}
         toolbarTitle={title || 'Musicary'}
         navItems={[
-          <ListItem component={ListItemLink} route={'home'} primaryText="Home"  />,
+          <ListItem
+            key="home"
+            component={ListItemLink}
+            route="home"
+            primaryText="Home"
+          />,
           ...this.items(),
         ]}
       >

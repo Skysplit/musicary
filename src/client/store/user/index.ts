@@ -2,29 +2,37 @@ import {
   fetchUserRequest,
   fetchUserSuccess,
   fetchUserFailure,
-} from '@app/client/store/user/actionTypes';
+  logout,
+} from '@client/store/user/actions';
 import {
   FETCH_USER_SUCCESS,
   FETCH_USER_REQUEST,
   FETCH_USER_FAILURE,
-} from '@app/client/store/user/actions';
+  LOGOUT,
+} from '@client/store/user/actionTypes';
+import { getUserData, getUserToken } from '@client/utils/userData';
+
+export interface UserInterface {
+  id: number;
+  email: string;
+}
 
 export interface UserState {
-  user?: {
-    id: number;
-    email: string;
-  };
+  user?: UserInterface;
   isLoading: boolean;
 }
 
 export type UserActions =
   | ReturnType<typeof fetchUserRequest>
   | ReturnType<typeof fetchUserSuccess>
-  | ReturnType<typeof fetchUserFailure>;
+  | ReturnType<typeof fetchUserFailure>
+  | ReturnType<typeof logout>;
 
+
+const canInitialize = global.window && getUserToken();
 
 const initialState: UserState = {
-  user: null,
+  user: canInitialize ? getUserData() : null,
   isLoading: false,
 };
 
@@ -49,6 +57,13 @@ export default (state: UserState = initialState, action: UserActions): UserState
       return {
         ...state,
         isLoading: false,
+      };
+    }
+
+    case LOGOUT: {
+      return {
+        ...state,
+        user: null,
       };
     }
 

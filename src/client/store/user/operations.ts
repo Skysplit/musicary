@@ -3,7 +3,8 @@ import {
   fetchUserRequest,
   fetchUserSuccess,
   fetchUserFailure,
-} from '@app/client/store/user/actionTypes';
+  logout,
+} from '@app/client/store/user/actions';
 import client from '@app/client/utils/client';
 
 export const fetchUser = () => async (dispatch: Dispatch) => {
@@ -15,3 +16,5 @@ export const fetchUser = () => async (dispatch: Dispatch) => {
     dispatch(fetchUserFailure());
   }
 };
+
+export const logoutUser = () => (dispatch: Dispatch) => dispatch(logout());

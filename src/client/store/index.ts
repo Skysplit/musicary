@@ -1,15 +1,12 @@
 import { createStore } from 'redux';
 import { StoreCreatorOptions } from 'next-redux-wrapper';
 import { Request } from 'express';
-import { UserState } from '@app/client/store/user';
 import rootReducer from './rootReducer';
 import middleware from './middleware';
 
-export interface State {
-  user: UserState;
-}
+export type State = ReturnType<typeof rootReducer>;
 
-interface Options extends StoreCreatorOptions<{}, {}, {}, {}, {}> {
+interface Options extends StoreCreatorOptions<State, {}, {}, {}, {}> {
   req: Request;
 }
 

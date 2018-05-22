@@ -1,20 +1,31 @@
 import { PureComponent, ReactNode, ComponentClass, StatelessComponent } from 'react';
-import { UserInterface } from '@app/server/module/user/user.model';
+import { UserInterface } from '@client/store/user';
 import { fetchUser } from '@app/client/store/user/operations';
+import { getUserToken } from '@app/client/utils/userData';
 
 export interface WithUserProps {
   user: UserInterface;
   loadingComponent: ComponentClass | StatelessComponent;
   isUserLoading: boolean;
   fetchUser: typeof fetchUser;
+  forceFetch?: boolean;
   children: (user?: UserInterface) => ReactNode;
 }
 
 export default class WithUser extends PureComponent<WithUserProps> {
-  componentDidMount() {
-    const { user, isUserLoading } = this.props;
+  static defaultProps = {
+    forceFetch: false,
+  };
 
-    if (isUserLoading || user) {
+  componentDidMount() {
+    const { user, isUserLoading, forceFetch } = this.props;
+    const token = getUserToken();
+
+    if (!token) {
+      return;
+    }
+
+    if ((isUserLoading || user) && !forceFetch) {
       return;
     }
 

@@ -7,14 +7,16 @@ import {
   ManyToOne,
   JoinTable,
 } from 'typeorm';
+import { Length } from 'class-validator';
 import User from '@server/module/user/user.model';
-import Track from '@server/module/tracks/track.model';
+import Track from './track/track.model';
 
 export interface PlaylistInterface {
-  id: number;
+  id?: number;
   name: string;
-  position: number;
-  user: User;
+  position?: number;
+  user?: User;
+  tracks: Promise<Track[]>;
 }
 
 @Entity()
@@ -22,6 +24,7 @@ export default class Playlist extends BaseEntity implements PlaylistInterface {
   @PrimaryGeneratedColumn()
   id: number;
 
+  @Length(3, 150)
   @Column()
   name: string;
 
@@ -31,7 +34,9 @@ export default class Playlist extends BaseEntity implements PlaylistInterface {
   @ManyToOne(type => User, user => user.playlists)
   user: User;
 
-  @ManyToMany(type => Track, track => track.playlists)
+  @ManyToMany(type => Track, track => track.playlists, {
+    lazy: true,
+  })
   @JoinTable({ name: 'playlist_track' })
-  tracks: Track[];
+  tracks: Promise<Track[]>;
 }

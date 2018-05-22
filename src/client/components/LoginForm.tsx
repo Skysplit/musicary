@@ -2,7 +2,12 @@ import React, { PureComponent } from 'react';
 import { FormikProps, FormikValues } from 'formik';
 import { TextField, Button, Checkbox } from 'react-md';
 
-type LoginFormProps = FormikProps<FormikValues>;
+interface LoginFormValues extends FormikValues {
+  email: string;
+  password: string;
+}
+
+type LoginFormProps = FormikProps<LoginFormValues>;
 
 export default class LoginForm extends PureComponent<LoginFormProps> {
   handleTextFieldChange = (value: string, event: any) => (

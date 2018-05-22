@@ -1,10 +1,10 @@
 import React, {  PureComponent } from 'react';
-import { SingletonRouter } from 'next/router';
+import { SingletonRouter, withRouter } from 'next/router';
 import { Formik, FormikValues, FormikActions } from 'formik';
 import yup from 'yup';
 import client from '@client/utils/client';
 import LoginForm from '@client/components/LoginForm';
-import { UserInterface } from '@app/server/module/user/user.model';
+import { UserInterface } from '@client/store/user';
 import { saveUserToken, saveUserData } from '@app/client/utils/userData';
 
 export interface LoginFormValues {
@@ -13,7 +13,7 @@ export interface LoginFormValues {
   remember: boolean;
 }
 
-export type LoginPageProps = {
+export type LoginFormContainerProps = {
   router: SingletonRouter;
 };
 
@@ -32,7 +32,7 @@ interface LoginFailure {
   };
 }
 
-export default class LoginPage extends PureComponent<LoginPageProps> {
+export class LoginFormContainer extends PureComponent<LoginFormContainerProps> {
   private schema = yup.object({
     email: yup.string().email('Wrong email address').required('Field cannot be empty'),
     password: yup.string().required('Field cannot be empty'),
@@ -82,3 +82,5 @@ export default class LoginPage extends PureComponent<LoginPageProps> {
     );
   }
 }
+
+export default withRouter(LoginFormContainer);

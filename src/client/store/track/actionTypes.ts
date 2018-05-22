@@ -1,0 +1,1 @@
+export const FETCH_MANY_TRACKS_SUCCESS = 'tracks/FETCH_MANY_SUCCESS';

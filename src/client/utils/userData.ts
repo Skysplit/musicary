@@ -1,33 +1,33 @@
-import { UserInterface } from '@app/server/module/user/user.model';
+import Cookie from 'js-cookie';
+import { UserInterface } from '@client/store/user';
 
-class UserStorage {
-  static save(key: string, value: string) {
-    return localStorage.setItem(key, value);
-  }
+export const TOKEN_KEY = 'userToken';
+export const USER_KEY = 'userData';
 
-  static get(key: string) {
-    return localStorage.getItem(key);
-  }
-}
+export const saveUserToken = (token: string, remember = false) => (
+  Cookie.set(TOKEN_KEY, token, {
+    expires: remember ? 90 : null,
+  })
+);
 
-const TOKEN_KEY = 'userToken';
-const USER_KEY = 'userData';
+export const getUserToken = (): string => Cookie.get(TOKEN_KEY);
 
-export const saveUserToken = (token: string) => UserStorage.save(TOKEN_KEY, token);
-
-export const getUserToken = (): string => UserStorage.get(TOKEN_KEY);
-
-export const saveUserData = (user: UserInterface) => UserStorage.save(
+export const saveUserData = (user: UserInterface) => localStorage.setItem(
   USER_KEY,
   JSON.stringify(user),
 );
 
 export const getUserData = (): UserInterface | null => {
-  const userString = UserStorage.get(USER_KEY);
+  const userString = localStorage.getItem(USER_KEY);
 
   if (userString) {
     return <UserInterface>JSON.parse(userString);
   }
 
   return null;
+};
+
+export const removeUser = () => {
+  Cookie.remove(TOKEN_KEY);
+  localStorage.removeItem(USER_KEY);
 };

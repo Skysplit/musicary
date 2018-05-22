@@ -1,13 +1,13 @@
 import { BaseEntity, Entity, PrimaryGeneratedColumn, Column, ManyToMany, Index } from 'typeorm';
 import Playlist from '@server/module/playlist/playlist.model';
 
-interface TrackInterface {
-  id: number;
+export interface TrackInterface {
+  id?: number;
   name: string;
   sourceId: string;
   sourceType: string;
   metadata: string;
-  playlists: Playlist[];
+  playlists?: Playlist[];
 }
 
 @Entity()

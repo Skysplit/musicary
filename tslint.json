@@ -5,7 +5,9 @@
     "no-unused-variable": true,
     "no-console": {
       "severity": "warn"
-    }
+    },
+    "strict-boolean-expressions": false,
+    "variable-name": false
   },
   "linterOptions": {
     "exclude": ["src/server/migration/**/*.ts"]
