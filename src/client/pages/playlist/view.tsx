@@ -1,15 +1,18 @@
-import { PureComponent } from 'react';
+import { PureComponent, Fragment } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect, Dispatch } from 'react-redux';
+import { Request } from 'express';
+import io from 'socket.io-client';
+import { Snackbar } from 'react-md';
 import { Context } from 'next/document';
 import Error from 'next/error';
-import { Request } from 'express';
 import { PlaylistInterface } from '@client/store/playlist';
 import { setSinglePlaylist } from '@client/store/playlist/actions';
 import client, { getHeaders } from '@client/utils/client';
-import PlaylistView from '@client/components/PlaylistView';
 import { fetchTracksSuccess } from '@client/store/track/actions';
 import { TrackInterface } from '@client/store/track';
+import { getUserToken } from '@client/utils/userData';
+import PlaylistViewContainer from '@client/containers/PlaylistViewContainer';
 
 interface PageContext extends Context {
   req: Request;
@@ -29,9 +32,19 @@ interface PlaylistViewPageProps extends InitialProps {
 
 type ComponentProps = PlaylistViewPageProps & {};
 
+interface Toast {
+  text: string;
+}
+
+type ComponentState = {
+  toasts: Toast[],
+};
+
 type AuthHeaders = ReturnType<typeof getHeaders>;
 
-export class PlaylistViewPage extends PureComponent<ComponentProps> {
+export class PlaylistViewPage extends PureComponent<ComponentProps, ComponentState> {
+  private io: SocketIOClient.Socket;
+
   static async fetchPlaylist(id: number, headers: AuthHeaders) {
     const response = await client.get(`/playlists/${id}`, { headers });
     return response.data as PlaylistInterface;
@@ -69,6 +82,10 @@ export class PlaylistViewPage extends PureComponent<ComponentProps> {
     };
   }
 
+  state: ComponentState = {
+    toasts: [],
+  };
+
   constructor(props: ComponentProps) {
     super(props);
 
@@ -76,6 +93,72 @@ export class PlaylistViewPage extends PureComponent<ComponentProps> {
       props.setSinglePlaylist(props.playlist);
       props.fetchTracksSuccess(props.playlist.id, props.tracks);
     }
+  }
+
+  private handleSocketConnection = () => {
+    const { toasts } = this.state;
+    const toast = { text: 'Connected with server!' };
+
+    this.setState({
+      toasts: [...toasts, toast],
+    });
+  }
+
+  private handleSocketImportError = (playlistId: number) => {
+    const { playlist } = this.props;
+    const { toasts } = this.state;
+
+    if (playlist.id !== playlistId) {
+      return;
+    }
+
+    const toast = {
+      text: 'There was an error while importing playlist',
+    };
+
+    this.setState({
+      toasts: [...toasts, toast],
+    });
+  }
+
+  private handleSocketTrack = (playlistId: number, track: TrackInterface) => {
+    const { playlist } = this.props;
+    const { toasts } = this.state;
+
+    if (playlist.id !== playlistId) {
+      return;
+    }
+
+    const toast = {
+      text: `New track! ${track.name}`,
+    };
+
+    this.setState({
+      toasts: [...toasts, toast],
+    });
+  }
+
+  componentDidMount() {
+    this.io = io({
+      query: { token: getUserToken() },
+      autoConnect: false,
+    });
+
+    this.io.connect();
+
+    this.io.on('connect', this.handleSocketConnection);
+    this.io.on('track', this.handleSocketTrack);
+    this.io.on('import-error', this.handleSocketImportError);
+  }
+
+  componentWillUnmount() {
+    this.io.removeAllListeners();
+    this.io.close();
+  }
+
+  handleDismiss = () => {
+    const [, ...toasts] = this.state.toasts;
+    this.setState({ toasts });
   }
 
   render() {
@@ -86,10 +169,15 @@ export class PlaylistViewPage extends PureComponent<ComponentProps> {
     }
 
     return (
-      <PlaylistView
-        playlist={playlist}
-        tracks={tracks}
-      />
+      <Fragment>
+        <PlaylistViewContainer playlistId={playlist.id} />
+        <Snackbar
+          toasts={this.state.toasts}
+          onDismiss={this.handleDismiss}
+          autohideTimeout={2000}
+          autohide
+        />
+      </Fragment>
     );
   }
 }

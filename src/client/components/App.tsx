@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import ListItemLink from '@app/client/components/ListItemLink';
 import { UserInterface } from '@client/store/user';
-import { NavigationDrawer, ListItem } from 'react-md';
+import { NavigationDrawer, ListItem, Toolbar, CloseButton, Divider } from 'react-md';
 import { AppContainerProps } from '@app/client/containers/AppContainer';
 import { removeUser } from '@app/client/utils/userData';
 
@@ -40,6 +40,7 @@ export default class App extends PureComponent<AppProps> {
       component={ListItemLink}
       route="playlists"
       />,
+      <Divider key="divider" />,
       <ListItem
         key="logout"
         primaryText="Log out"
@@ -63,7 +64,7 @@ export default class App extends PureComponent<AppProps> {
 
     return (
       <NavigationDrawer
-        drawerHeader={false}
+        drawerTitle="Musicary"
         toolbarTitle={title || 'Musicary'}
         navItems={[
           <ListItem

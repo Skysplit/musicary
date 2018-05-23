@@ -16,7 +16,7 @@ export interface PlaylistInterface {
   name: string;
   position?: number;
   user?: User;
-  tracks: Promise<Track[]>;
+  tracks: Track[] | Promise<Track[]>;
 }
 
 @Entity()
@@ -34,9 +34,7 @@ export default class Playlist extends BaseEntity implements PlaylistInterface {
   @ManyToOne(type => User, user => user.playlists)
   user: User;
 
-  @ManyToMany(type => Track, track => track.playlists, {
-    lazy: true,
-  })
+  @ManyToMany(type => Track, track => track.playlists, { lazy: true })
   @JoinTable({ name: 'playlist_track' })
-  tracks: Promise<Track[]>;
+  tracks: Track[] | Promise<Track[]>;
 }

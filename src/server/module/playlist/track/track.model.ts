@@ -13,6 +13,10 @@ export interface TrackInterface {
 @Entity()
 @Index(['sourceId', 'sourceType'], { unique: true })
 export default class Track extends BaseEntity implements TrackInterface {
+  static Source = {
+    youtube: 'youtube',
+  };
+
   @PrimaryGeneratedColumn()
   id: number;
 

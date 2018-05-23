@@ -1,4 +1,5 @@
 import React from 'react';
+import { Request } from 'express';
 import { Provider } from 'react-redux';
 import withRedux from 'next-redux-wrapper';
 import App, { Container } from 'next/app';
@@ -7,11 +8,10 @@ import { Context } from 'next/document';
 import makeStore from '@client/store';
 import AppContainer from '@client/containers/AppContainer';
 import client, { getHeaders } from '@client/utils/client';
-import { Request } from 'express';
-
-import './app.scss';
 import { UserInterface } from '@client/store/user';
 import { fetchUserSuccess } from '@client/store/user/actions';
+
+import './app.scss';
 
 interface ComponentContext extends Context {
   req: Request;

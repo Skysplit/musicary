@@ -3,6 +3,7 @@ import { FETCH_MANY_TRACKS_SUCCESS } from '@client/store/track/actionTypes';
 
 export interface TrackInterface {
   id: number;
+  name: string;
   sourceId: string;
   sourceType: string;
 }

@@ -22,7 +22,7 @@ export default class PlaylistForm extends PureComponent<PlaylistFormProps> {
     return (
       <form onSubmit={handleSubmit}>
         <Grid noSpacing spacing={0} gutter={0}>
-          <Cell size={11} align="middle">
+          <Cell phoneSize={3} tabletSize={6} desktopSize={11} align="middle">
             <TextField
               id="name"
               value={values.name}
@@ -34,7 +34,7 @@ export default class PlaylistForm extends PureComponent<PlaylistFormProps> {
               fullWidth
             />
           </Cell>
-          <Cell size={1} style={{ textAlign: 'left' }} align="middle">
+          <Cell phoneSize={1} tabletSize={2} desktopSize={1} style={{ textAlign: 'right' }}>
             <Button type="submit" primary swapTheming icon disabled={isSubmitting}>
               checked
             </Button>{' '}

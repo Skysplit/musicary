@@ -1,7 +1,7 @@
 import { PureComponent, Fragment } from 'react';
 import { TextField, Button, Grid, Cell } from 'react-md';
 import { FormikProps, FormikValues, FieldArray, ArrayHelpers } from 'formik';
-import { last, has, get } from 'lodash';
+import { last, has, get, isEmpty, every } from 'lodash';
 
 interface TrackFormValues extends FormikValues {
   url: string[];
@@ -10,9 +10,12 @@ interface TrackFormValues extends FormikValues {
 type ComponentProps = FormikProps<TrackFormValues>;
 
 export default class TrackForm extends PureComponent<ComponentProps> {
-
-
   handleChange = (value: string, e: any) => this.props.handleChange(e);
+
+  canAddTrack = () => {
+    const { errors, values } = this.props;
+    return isEmpty(errors) && every(values.url);
+  }
 
   addTrack = (helpers: ArrayHelpers) => () => {
     const { values } = this.props;
@@ -36,21 +39,28 @@ export default class TrackForm extends PureComponent<ComponentProps> {
             <Fragment>
               {values.url.map((value, index) => (
                 <Grid key={index} noSpacing gutter={0}>
-                  <Cell align="middle" size={11}>
+                  <Cell align="middle" phoneSize={3} tabletSize={7} desktopSize={11}>
                     <TextField
                       id={`url.${index}`}
                       value={value}
                       onChange={this.handleChange}
-                      error={has(errors, ['url', index])}
+                      error={!!get(errors, ['url', index])}
                       errorText={get(errors, ['url', index])}
+                      placeholder="Paste track url here"
                     />
                   </Cell>
                   {values.url.length > 1 && (
-                    <Cell align="middle" style={{ textAlign: 'left' }} size={1}>
+                    <Cell
+                      align="middle"
+                      style={{ textAlign: 'left' }}
+                      phoneSize={1}
+                      tabletSize={1}
+                      desktopSize={1}
+                    >
                       <Button
-                        icon
-                        secondary
                         onClick={this.removeTrack(arrayHelpers, index)}
+                        secondary
+                        icon
                       >
                         close
                       </Button>
@@ -58,9 +68,19 @@ export default class TrackForm extends PureComponent<ComponentProps> {
                   )}
                 </Grid>
               ))}
-              <Button raised primary onClick={this.addTrack(arrayHelpers)}>
-                Add track
+              <Button type="submit" secondary raised>
+                Save
               </Button>
+              {' '}
+              {this.canAddTrack() && (
+                <Button
+                  onClick={this.addTrack(arrayHelpers)}
+                  primary
+                  raised
+                  >
+                  Add track
+                </Button>
+              )}
             </Fragment>
           )}
         />

@@ -63,10 +63,7 @@ export class PlaylistsPage extends PureComponent<PlaylistsPageProps> {
     }
 
     return (
-      <Fragment>
-        <h1>My playlists</h1>
-        <PlaylistsListContainer />
-      </Fragment>
+      <PlaylistsListContainer />
     );
   }
 }

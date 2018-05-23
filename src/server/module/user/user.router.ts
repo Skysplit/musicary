@@ -14,7 +14,7 @@ router.get(
   '/me',
   auth.jwt,
   (req: UserRequest, res) => {
-    res.send(req.user);
+    res.json(req.user);
   },
 );
 

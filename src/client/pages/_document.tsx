@@ -19,6 +19,7 @@ export default class CustomDocument extends Document {
             rel="stylesheet"
           />
           <link rel="stylesheet" href="/_next/static/style.css" />
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
         </Head>
         <body>
           <Main />

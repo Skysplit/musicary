@@ -4,7 +4,7 @@ import { isEmpty, get } from 'lodash';
 import * as auth from '@server/middleware/auth';
 import { UserRequest } from '@server/module/user/user.router';
 import Playlist from '@server/module/playlist/playlist.model';
-import mapErrors from '@server/utils/mapErrors';
+import mapErrors from '@server/utils/mapModelErrors';
 import trackRouter from './track/track.router';
 
 export interface PlaylistRequest extends UserRequest {
@@ -37,8 +37,11 @@ router.param('id', async (req: PlaylistRequest, res, next, id: number) => {
 
 // Get playlists list
 router.get('/', async (req: PlaylistRequest, res) => {
-  const playlists = await req.user.playlists;
-  res.send(playlists);
+  const playlists = await Playlist.find({
+    where: { user: req.user },
+  });
+
+  res.json(playlists);
 });
 
 // Create playlist
@@ -57,16 +60,15 @@ router.post('/', async (req: PlaylistRequest, res) => {
   const errors = await validate(playlist);
 
   if (isEmpty(errors)) {
-    return res.send(await playlist.save());
+    return res.json(await playlist.save());
   }
 
-  return res.status(422).send(mapErrors(errors));
+  return res.status(422).json(mapErrors(errors));
 });
 
 // Remove playlist
 router.delete('/:id', async (req: PlaylistRequest, res) => {
-  await req.playlist.remove();
-  res.send(req.playlist);
+  res.json(await req.playlist.remove());
 });
 
 // Update playlist
@@ -82,15 +84,15 @@ router.put('/:id', async (req: PlaylistRequest, res) => {
   const errors = await validate(playlist);
 
   if (isEmpty(errors)) {
-    return res.send(await playlist.save());
+    return res.json(await playlist.save());
   }
 
-  return res.status(422).send(mapErrors(errors));
+  return res.status(422).json(mapErrors(errors));
 });
 
 // Get playlist
 router.get('/:id', async (req: PlaylistRequest, res) => {
-  res.send(req.playlist);
+  res.json(req.playlist);
 });
 
 export default router;

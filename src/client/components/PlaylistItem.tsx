@@ -33,12 +33,12 @@ export default class PlaylistItem extends PureComponent<PlaylistItemProps> {
     return (
       <Link route="playlist" params={{ id: playlist.id }}>
         <Grid gutter={0} spacing={0} noSpacing style={{ cursor: 'pointer' }}>
-          <Cell size={11} align="middle">
+          <Cell phoneSize={3} tabletSize={6} desktopSize={11} align="middle">
             <span className="md-title">
               {playlist.name}
             </span>
           </Cell>
-          <Cell size={1} style={{ textAlign: 'left' }}>
+          <Cell phoneSize={1} tabletSize={2} desktopSize={1} style={{ textAlign: 'right' }}>
             <Button icon primary onClick={this.handleEdit} disabled={removing}>
               edit
             </Button>{' '}

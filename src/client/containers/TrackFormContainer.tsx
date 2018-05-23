@@ -11,7 +11,9 @@ type SubmitActions = FormikActions<FormValues>;
 
 export default class TrackFormContainer extends PureComponent {
   private schema = yup.object({
-    url: yup.array(yup.string().url('Field must be URL')),
+    url: yup.array(
+      yup.string().url('Field must be URL').required('Field cannot be empty'),
+    ),
   });
 
   handleSubmit = async (values: FormValues, actions: SubmitActions) => {
