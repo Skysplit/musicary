@@ -40,7 +40,7 @@ export default class LoginFormContainer extends PureComponent<LoginFormContainer
   private login(response: LoginSuccess, remember: boolean) {
     saveUserToken(response.token);
     saveUserData(response.user);
-    Router.push('/');
+    Router.pushRoute('playlists');
   }
 
   private handleSubmit = async (values: FormikValues, actions: SubmitActions) => {

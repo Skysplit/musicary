@@ -14,7 +14,7 @@ export default class App extends PureComponent<AppProps> {
   private logout = () => {
     removeUser();
     this.props.logout();
-    Router.push('/');
+    Router.pushRoute('home');
   }
 
   private guestItems() {

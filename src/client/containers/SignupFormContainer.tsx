@@ -51,7 +51,7 @@ export class SignupFormContainer extends PureComponent<ComponentProps> {
       saveUserData(data.user);
       saveUserToken(data.token);
       fetchUserSuccess(data.user);
-      Router.push('/');
+      Router.pushRoute('home');
       setSubmitting(false);
     } catch (err) {
       const { response = {} } = err;
