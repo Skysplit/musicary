@@ -1,7 +1,6 @@
 import { Router, Request } from 'express';
 import * as auth from '@server/middleware/auth';
 import User from '@server/module/user/user.model';
-import { validate } from 'class-validator';
 import { body, validationResult } from 'express-validator/check';
 import mapErrors from '@server/utils/mapRequestErrors';
 import createJWT from '@server/utils/createJWT';

@@ -50,7 +50,7 @@ export default class Tracklist extends PureComponent<TracklistProps, TracklistSt
   }
 
   handleDragEnd = (result: DropResult, hook: HookProvided) => {
-    console.log(result);
+    // Add support for drag & drop
   }
 
   handleTrackClick = (track: TrackInterface) => {

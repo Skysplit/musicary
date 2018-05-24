@@ -1,7 +1,7 @@
 import { PureComponent, Fragment } from 'react';
 import { TextField, Button, Grid, Cell } from 'react-md';
 import { FormikProps, FormikValues, FieldArray, ArrayHelpers } from 'formik';
-import { last, has, get, isEmpty, every } from 'lodash';
+import { last, get, isEmpty, every } from 'lodash';
 
 interface TrackFormValues extends FormikValues {
   url: string[];

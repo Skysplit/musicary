@@ -23,4 +23,4 @@ const actionCreators = {
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(actionCreators, dispatch);
 
-export default connect(null, mapDispatchToProps)(AppContainer)
+export default connect(null, mapDispatchToProps)(AppContainer);

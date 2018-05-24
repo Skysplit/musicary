@@ -1,7 +1,7 @@
 import React from 'react';
 import { Request } from 'express';
 import { Provider } from 'react-redux';
-import { some } from 'lodash'
+import { some } from 'lodash';
 import withRedux from 'next-redux-wrapper';
 import App, { Container } from 'next/app';
 import Head from 'next/head';

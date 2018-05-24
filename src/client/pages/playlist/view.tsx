@@ -9,7 +9,7 @@ import Error from 'next/error';
 import { PlaylistInterface } from '@client/store/playlist';
 import { setSinglePlaylist, removePlaylistTrack } from '@client/store/playlist/actions';
 import client, { getHeaders } from '@client/utils/client';
-import { fetchTracksSuccess, setSingleTrack, removeTrack } from '@client/store/track/actions';
+import { fetchTracksSuccess, setSingleTrack } from '@client/store/track/actions';
 import { TrackInterface } from '@client/store/track';
 import { getUserToken } from '@client/utils/userData';
 import PlaylistViewContainer from '@client/containers/PlaylistViewContainer';
