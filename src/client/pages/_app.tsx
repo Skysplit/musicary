@@ -10,7 +10,7 @@ import makeStore from '@client/store';
 import AppContainer from '@client/containers/AppContainer';
 import client, { getHeaders } from '@client/utils/client';
 import { UserInterface } from '@client/store/user';
-import { fetchUserSuccess } from '@client/store/user/actions';
+import { fetchUserSuccess, logout } from '@client/store/user/actions';
 
 import './app.scss';
 
@@ -57,6 +57,8 @@ class CustomApp extends App {
 
     if (props.user) {
       props.store.dispatch(fetchUserSuccess(props.user));
+    } else {
+      props.store.dispatch(logout());
     }
   }
 

@@ -10,7 +10,6 @@ import {
   FETCH_USER_FAILURE,
   LOGOUT,
 } from '@client/store/user/actionTypes';
-import { getUserData, getUserToken } from '@client/utils/userData';
 
 export interface UserInterface {
   id: number;
@@ -28,11 +27,8 @@ export type UserActions =
   | ReturnType<typeof fetchUserFailure>
   | ReturnType<typeof logout>;
 
-
-const canInitialize = global.window && getUserToken();
-
 const initialState: UserState = {
-  user: canInitialize ? getUserData() : null,
+  user: null,
   isLoading: false,
 };
 
