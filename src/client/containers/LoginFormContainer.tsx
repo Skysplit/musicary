@@ -1,7 +1,7 @@
 import React, {  PureComponent } from 'react';
-import { SingletonRouter, withRouter } from 'next/router';
 import { Formik, FormikValues, FormikActions } from 'formik';
 import yup from 'yup';
+import Router from '@next/router';
 import client from '@client/utils/client';
 import LoginForm from '@client/components/LoginForm';
 import { UserInterface } from '@client/store/user';
@@ -14,7 +14,6 @@ export interface LoginFormValues {
 }
 
 export type LoginFormContainerProps = {
-  router: SingletonRouter;
 };
 
 type SubmitActions = FormikActions<LoginFormValues>;
@@ -32,7 +31,7 @@ interface LoginFailure {
   };
 }
 
-export class LoginFormContainer extends PureComponent<LoginFormContainerProps> {
+export default class LoginFormContainer extends PureComponent<LoginFormContainerProps> {
   private schema = yup.object({
     email: yup.string().email('Wrong email address').required('Field cannot be empty'),
     password: yup.string().required('Field cannot be empty'),
@@ -41,24 +40,25 @@ export class LoginFormContainer extends PureComponent<LoginFormContainerProps> {
   private login(response: LoginSuccess, remember: boolean) {
     saveUserToken(response.token);
     saveUserData(response.user);
-    this.props.router.push('/');
+    Router.push('/');
   }
 
   private handleSubmit = async (values: FormikValues, actions: SubmitActions) => {
-    actions.setSubmitting(true);
+    const { setSubmitting, setErrors } = actions;
+    setSubmitting(true);
 
     try {
       const response = await client.post('/users/login', values);
       this.login(response.data, values.remember);
+      setSubmitting(false);
     } catch (err) {
       const { response } = err;
+      setSubmitting(false);
       const data: LoginFailure = response.data;
 
       if (response.status === 422) {
-        actions.setErrors(data.errors);
+        setErrors(data.errors);
       }
-    } finally {
-      actions.setSubmitting(false);
     }
   }
 
@@ -82,5 +82,3 @@ export class LoginFormContainer extends PureComponent<LoginFormContainerProps> {
     );
   }
 }
-
-export default withRouter(LoginFormContainer);

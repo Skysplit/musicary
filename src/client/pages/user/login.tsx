@@ -1,4 +1,5 @@
-import React, { PureComponent, Fragment } from 'react';
+import { PureComponent } from 'react';
+import { Card, CardText, CardTitle } from 'react-md';
 import LoginFormContainer from '@app/client/containers/LoginFormContainer';
 
 export default class UserLoginPage extends PureComponent {
@@ -8,11 +9,12 @@ export default class UserLoginPage extends PureComponent {
 
   render() {
     return (
-      <Fragment>
-        <h1>Login</h1>
-
-        <LoginFormContainer />
-      </Fragment>
+      <Card>
+        <CardTitle title="Login" />
+        <CardText>
+          <LoginFormContainer />
+        </CardText>
+      </Card>
     );
   }
 }

@@ -1,9 +1,10 @@
 import React, { PureComponent } from 'react';
 import ListItemLink from '@app/client/components/ListItemLink';
 import { UserInterface } from '@client/store/user';
-import { NavigationDrawer, ListItem, Toolbar, CloseButton, Divider } from 'react-md';
+import { NavigationDrawer, ListItem, Divider } from 'react-md';
 import { AppContainerProps } from '@app/client/containers/AppContainer';
 import { removeUser } from '@app/client/utils/userData';
+import Router from '@next/router';
 
 export interface AppProps extends AppContainerProps {
   user: UserInterface;
@@ -13,7 +14,7 @@ export default class App extends PureComponent<AppProps> {
   private logout = () => {
     removeUser();
     this.props.logout();
-    this.props.router.push('/');
+    Router.push('/');
   }
 
   private guestItems() {
@@ -28,6 +29,8 @@ export default class App extends PureComponent<AppProps> {
       <ListItem
         key="signup"
         primaryText="Sign up"
+        component={ListItemLink}
+        route="signup"
       />,
     ];
   }
@@ -60,7 +63,6 @@ export default class App extends PureComponent<AppProps> {
 
   render() {
     const { children, title } = this.props;
-
 
     return (
       <NavigationDrawer

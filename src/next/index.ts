@@ -1,7 +1,7 @@
 import next from 'next';
 import path from 'path';
 import isProduction from '@server/utils/isProduction';
-import router from './router';
+import router from './routes';
 
 const dev = !isProduction();
 const dir = path.resolve(__dirname, '..', 'client');

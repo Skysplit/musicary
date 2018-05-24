@@ -1,11 +1,5 @@
-import Router from 'next-routes';
+import router from './routes';
 
-const router = new Router();
+const Router = router.Router;
 
-router.add('home', '/', 'home');
-router.add('login', '/login', 'user/login');
-router.add('signup', '/signup', 'user/signup');
-router.add('playlists', '/playlists', 'playlist/index');
-router.add('playlist', '/playlists/:id', 'playlist/view');
-
-export default router;
+export default Router;

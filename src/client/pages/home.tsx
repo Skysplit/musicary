@@ -1,15 +1,16 @@
-import React, { Component, Fragment } from 'react';
+import { PureComponent } from 'react';
+import { Card, CardTitle } from 'react-md';
 
-export default class IndexPage extends Component {
+export default class IndexPage extends PureComponent {
   static async getInitialProps() {
     return { title: 'Homepage' };
   }
 
   render() {
     return (
-      <Fragment>
-        <h1>Welcome to musicary</h1>
-      </Fragment>
+      <Card>
+        <CardTitle title="Welcome to musicary" />
+      </Card>
     );
   }
 }

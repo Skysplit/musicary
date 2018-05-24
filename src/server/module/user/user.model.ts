@@ -8,6 +8,7 @@ import {
   BeforeUpdate,
   OneToMany,
 } from 'typeorm';
+import { IsEmail, IsNotEmpty } from 'class-validator';
 import { hashPassword } from '@server/utils/password';
 import Playlist from '@server/module/playlist/playlist.model';
 
@@ -25,11 +26,17 @@ export default class User extends BaseEntity implements UserInterface {
   @PrimaryGeneratedColumn()
   id: number;
 
+  @IsEmail()
+  @IsNotEmpty()
   @Column()
   email: string;
 
+  @IsNotEmpty()
   @Column()
   password: string;
+
+  @IsNotEmpty()
+  passwordConfirmation: string;
 
   @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   createdAt: Date;

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Request } from 'express';
 import { Provider } from 'react-redux';
+import { some } from 'lodash'
 import withRedux from 'next-redux-wrapper';
 import App, { Container } from 'next/app';
 import Head from 'next/head';
@@ -27,11 +28,13 @@ class CustomApp extends App {
     let user: UserInterface;
     const headers = getHeaders(req);
 
-    try {
-      const response = await client.get('/users/me', { headers });
-      user = response.data as UserInterface;
-    } catch (err) {
-      user = null;
+    if (some(headers)) {
+      try {
+        const response = await client.get('/users/me', { headers });
+        user = response.data as UserInterface;
+      } catch (err) {
+        user = null;
+      }
     }
 
     return user;

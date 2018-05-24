@@ -1,4 +1,4 @@
-import router from './router';
+import router from './routes';
 
 const Link = router.Link;
 
