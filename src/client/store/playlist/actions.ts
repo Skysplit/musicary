@@ -9,6 +9,7 @@ import {
   REMOVE_PLAYLIST_REQUEST,
   REMOVE_PLAYLIST_FAILURE,
   REMOVE_PLAYLIST_SUCCESS,
+  REMOVE_PLAYLIST_TRACK,
 } from '@client/store/playlist/actionTypes';
 import { PlaylistInterface } from '@client/store/playlist';
 
@@ -63,3 +64,12 @@ export const setSinglePlaylist = (payload: PlaylistInterface) => ({
   payload,
   type: SET_PLAYLIST as typeof SET_PLAYLIST,
 });
+
+export const removePlaylistTrack = (playlistId: number, trackId: number) => ({
+  type: REMOVE_PLAYLIST_TRACK as typeof REMOVE_PLAYLIST_TRACK,
+  payload: {
+    playlistId,
+    trackId,
+  },
+});
+

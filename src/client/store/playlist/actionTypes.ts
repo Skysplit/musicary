@@ -11,3 +11,5 @@ export const REMOVE_PLAYLIST_SUCCESS = 'playlist/REMOVE_SUCCESS';
 export const REMOVE_PLAYLIST_FAILURE = 'playlist/REMOVE_FAILURE';
 
 export const SET_PLAYLIST = 'playlist/SET';
+
+export const REMOVE_PLAYLIST_TRACK = 'playlist/REMOVE_TRACK';

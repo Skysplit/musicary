@@ -19,14 +19,14 @@ export default class PlaylistView extends PureComponent<PlaylistViewProps> {
       <Fragment>
         <Card>
           <CardTitle title={playlist.name} />
-          <Tracklist tracks={tracks} />
+          <Tracklist tracks={tracks} playlist={playlist} />
         </Card>
 
         <Divider style={{ margin: '10px 0' }} />
 
         <Card style={{ padding: '0 20px 20px' }}>
           <CardTitle title="Add tracks" />
-          <TrackFormContainer />
+          <TrackFormContainer playlist={playlist} />
         </Card>
       </Fragment>
     );

@@ -30,7 +30,7 @@ export default class TrackForm extends PureComponent<ComponentProps> {
   }
 
   render() {
-    const { handleSubmit, values, errors } = this.props;
+    const { handleSubmit, values, errors, isValid } = this.props;
     return (
       <form onSubmit={handleSubmit}>
         <FieldArray
@@ -68,10 +68,6 @@ export default class TrackForm extends PureComponent<ComponentProps> {
                   )}
                 </Grid>
               ))}
-              <Button type="submit" secondary raised>
-                Save
-              </Button>
-              {' '}
               {this.canAddTrack() && (
                 <Button
                   onClick={this.addTrack(arrayHelpers)}
@@ -81,6 +77,10 @@ export default class TrackForm extends PureComponent<ComponentProps> {
                   Add track
                 </Button>
               )}
+              {' '}
+              <Button type="submit" secondary raised disabled={!isValid}>
+                Save
+              </Button>
             </Fragment>
           )}
         />

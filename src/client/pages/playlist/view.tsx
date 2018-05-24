@@ -7,9 +7,9 @@ import { Snackbar } from 'react-md';
 import { Context } from 'next/document';
 import Error from 'next/error';
 import { PlaylistInterface } from '@client/store/playlist';
-import { setSinglePlaylist } from '@client/store/playlist/actions';
+import { setSinglePlaylist, removePlaylistTrack } from '@client/store/playlist/actions';
 import client, { getHeaders } from '@client/utils/client';
-import { fetchTracksSuccess } from '@client/store/track/actions';
+import { fetchTracksSuccess, setSingleTrack, removeTrack } from '@client/store/track/actions';
 import { TrackInterface } from '@client/store/track';
 import { getUserToken } from '@client/utils/userData';
 import PlaylistViewContainer from '@client/containers/PlaylistViewContainer';
@@ -28,6 +28,8 @@ interface InitialProps {
 interface PlaylistViewPageProps extends InitialProps {
   setSinglePlaylist: typeof setSinglePlaylist;
   fetchTracksSuccess: typeof fetchTracksSuccess;
+  setSingleTrack: typeof setSingleTrack;
+  removePlaylistTrack: typeof removePlaylistTrack;
 }
 
 type ComponentProps = PlaylistViewPageProps & {};
@@ -133,9 +135,47 @@ export class PlaylistViewPage extends PureComponent<ComponentProps, ComponentSta
       text: `New track! ${track.name}`,
     };
 
+    this.props.setSingleTrack(playlistId, track);
+
     this.setState({
       toasts: [...toasts, toast],
     });
+  }
+
+  private handleSocketTracksAccepted = (playlistId: number) => {
+    const { playlist } = this.props;
+    const { toasts } = this.state;
+
+    if (playlist.id !== playlistId) {
+      return;
+    }
+
+    const toast = {
+      text: `Your tracks are being processed. They will appear on your list soon`,
+    };
+
+    this.setState({
+      toasts: [...toasts, toast],
+    });
+  }
+
+  private handleSocketTrackRemoved = (playlistId: number, track: TrackInterface) => {
+    const { playlist } = this.props;
+    const { toasts } = this.state;
+
+    if (playlist.id !== playlistId) {
+      return;
+    }
+
+    const toast = {
+      text: `Track ${track.name} removed from playlist`,
+    };
+
+    this.setState({
+      toasts: [...toasts, toast],
+    });
+
+    this.props.removePlaylistTrack(playlistId, track.id);
   }
 
   componentDidMount() {
@@ -147,8 +187,10 @@ export class PlaylistViewPage extends PureComponent<ComponentProps, ComponentSta
     this.io.connect();
 
     this.io.on('connect', this.handleSocketConnection);
+    this.io.on('tracks-accepted', this.handleSocketTracksAccepted);
     this.io.on('track', this.handleSocketTrack);
     this.io.on('import-error', this.handleSocketImportError);
+    this.io.on('track-removed', this.handleSocketTrackRemoved);
   }
 
   componentWillUnmount() {
@@ -162,7 +204,7 @@ export class PlaylistViewPage extends PureComponent<ComponentProps, ComponentSta
   }
 
   render() {
-    const { errorCode, playlist, tracks } = this.props;
+    const { errorCode, playlist } = this.props;
 
     if (errorCode) {
       return <Error statusCode={errorCode} />;
@@ -184,6 +226,8 @@ export class PlaylistViewPage extends PureComponent<ComponentProps, ComponentSta
 
 const actionCreators = {
   setSinglePlaylist,
+  setSingleTrack,
+  removePlaylistTrack,
   fetchTracksSuccess,
 };
 
