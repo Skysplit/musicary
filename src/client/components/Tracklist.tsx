@@ -147,7 +147,7 @@ export default class Tracklist extends PureComponent<TracklistProps, TracklistSt
                     playerVars: { autoplay: autoplay ? 1 : 0 },
                   },
                 }}
-                onEnded={this.playPrevious}
+                onEnded={this.playNext}
                 controls
               />
             </Cell>

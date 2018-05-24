@@ -35,9 +35,6 @@ export default class User extends BaseEntity implements UserInterface {
   @Column()
   password: string;
 
-  @IsNotEmpty()
-  passwordConfirmation: string;
-
   @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   createdAt: Date;
 
