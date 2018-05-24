@@ -1,11 +1,13 @@
 import React, {  PureComponent } from 'react';
 import { Formik, FormikValues, FormikActions } from 'formik';
 import yup from 'yup';
+import { connect } from 'react-redux';
 import Router from '@next/router';
 import client from '@client/utils/client';
 import LoginForm from '@client/components/LoginForm';
 import { UserInterface } from '@client/store/user';
 import { saveUserToken, saveUserData } from '@app/client/utils/userData';
+import { fetchUserSuccess } from '@client/store/user/actions';
 
 export interface LoginFormValues {
   email: string;
@@ -14,6 +16,7 @@ export interface LoginFormValues {
 }
 
 export type LoginFormContainerProps = {
+  fetchUserSuccess: typeof fetchUserSuccess;
 };
 
 type SubmitActions = FormikActions<LoginFormValues>;
@@ -31,7 +34,7 @@ interface LoginFailure {
   };
 }
 
-export default class LoginFormContainer extends PureComponent<LoginFormContainerProps> {
+export class LoginFormContainer extends PureComponent<LoginFormContainerProps> {
   private schema = yup.object({
     email: yup.string().email('Wrong email address').required('Field cannot be empty'),
     password: yup.string().required('Field cannot be empty'),
@@ -40,6 +43,7 @@ export default class LoginFormContainer extends PureComponent<LoginFormContainer
   private login(response: LoginSuccess, remember: boolean) {
     saveUserToken(response.token);
     saveUserData(response.user);
+    this.props.fetchUserSuccess(response.user);
     Router.pushRoute('playlists');
   }
 
@@ -82,3 +86,9 @@ export default class LoginFormContainer extends PureComponent<LoginFormContainer
     );
   }
 }
+
+const mapDispatchToProps = {
+  fetchUserSuccess,
+};
+
+export default connect(null, mapDispatchToProps)(LoginFormContainer);

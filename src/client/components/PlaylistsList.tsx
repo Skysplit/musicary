@@ -1,5 +1,5 @@
 import { PureComponent, Fragment } from 'react';
-import { Card, CardTitle, Divider } from 'react-md';
+import { Card, CardTitle, CardText, Divider } from 'react-md';
 import { isEmpty } from 'lodash';
 import { PlaylistListsContainerProps } from '@app/client/containers/PlaylistsListContainer';
 import PlaylistRowContainer from '@app/client/containers/PlaylistRowContainer';
@@ -18,34 +18,32 @@ export default class PlaylistsList extends PureComponent<PlaylistsListProps> {
 
     return (
       <Fragment>
-        <Card style={{ padding: '0 20px 20px' }}>
+        <Card>
           <CardTitle title="My playlists" />
-          {isEmpty(playlists) && (
-            <h3>
-              You have no playlists saved yet!
-            </h3>
-          )}
+          <CardText>
+            {isEmpty(playlists) && (
+              <h3>
+                You have no playlists saved yet!
+              </h3>
+            )}
 
-          {playlists.map(playlist => (
-            <PlaylistRowContainer key={playlist.id} playlist={playlist} />
-          ))}
+            {playlists.map(playlist => (
+              <PlaylistRowContainer key={playlist.id} playlist={playlist} />
+            ))}
+          </CardText>
         </Card>
 
         <Divider style={{ margin: '10px 0' }} />
 
-        <Card style={{ padding: '0 20px 20px' }}>
+        <Card>
           <CardTitle title="Add new playlist" />
-          {isEmpty(playlists) && (
-            <h3>
-              You have no playlists saved yet!
-            </h3>
-          )}
-
-          <PlaylistFormContainer
-            onCancel={onFormCancel}
-            onSave={onFormSave}
-            onSaved={onFormSaved}
-          />
+          <CardText>
+            <PlaylistFormContainer
+              onCancel={onFormCancel}
+              onSave={onFormSave}
+              onSaved={onFormSaved}
+            />
+          </CardText>
         </Card>
       </Fragment>
     );

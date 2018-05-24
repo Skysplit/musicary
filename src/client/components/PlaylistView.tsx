@@ -1,5 +1,6 @@
 import { PureComponent, Fragment } from 'react';
-import { Divider, Card, CardTitle } from 'react-md';
+import { Divider, Card, CardTitle, CardText } from 'react-md';
+import { isEmpty } from 'lodash';
 import { PlaylistInterface } from '@client/store/playlist';
 import { TrackInterface } from '@client/store/track';
 import TrackFormContainer from '@client/containers/TrackFormContainer';
@@ -19,14 +20,23 @@ export default class PlaylistView extends PureComponent<PlaylistViewProps> {
       <Fragment>
         <Card>
           <CardTitle title={playlist.name} />
-          <Tracklist tracks={tracks} playlist={playlist} />
+
+          <CardText>
+            {isEmpty(tracks) && (
+              <h2>You do not have any tracks on this playlist yet</h2>
+            )}
+            <Tracklist tracks={tracks} playlist={playlist} />
+          </CardText>
         </Card>
 
         <Divider style={{ margin: '10px 0' }} />
 
-        <Card style={{ padding: '0 20px 20px' }}>
+        <Card>
           <CardTitle title="Add tracks" />
-          <TrackFormContainer playlist={playlist} />
+
+          <CardText>
+            <TrackFormContainer playlist={playlist} />
+          </CardText>
         </Card>
       </Fragment>
     );

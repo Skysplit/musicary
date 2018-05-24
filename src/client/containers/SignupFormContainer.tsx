@@ -1,6 +1,5 @@
 import { PureComponent } from 'react';
-import { bindActionCreators } from 'redux';
-import { connect, Dispatch } from 'react-redux';
+import { connect } from 'react-redux';
 import { Formik, FormikValues, FormikActions } from 'formik';
 import yup from 'yup';
 import SignupForm from '@client/components/SignupForm';
@@ -82,10 +81,8 @@ export class SignupFormContainer extends PureComponent<ComponentProps> {
   }
 }
 
-const actionCreators = {
+const mapDispatchToProps = {
   fetchUserSuccess,
 };
-
-const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(actionCreators, dispatch);
 
 export default connect(null, mapDispatchToProps)(SignupFormContainer);

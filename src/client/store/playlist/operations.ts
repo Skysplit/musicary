@@ -12,7 +12,7 @@ import {
   removePlaylistFailure,
 } from '@client/store/playlist/actions';
 import client from '@client/utils/client';
-import { PlaylistInterface } from '@server/module/playlist/playlist.model';
+import { PlaylistInterface } from '@client/store/playlist';
 
 export const fetchManyPlaylists = () => async (dispatch: Dispatch) => {
   dispatch(fetchPlaylistsRequest());
