@@ -24,7 +24,8 @@
     "test:client:watch": "npm run test:client -- --watch",
     "test:client:ci": "npm run test:client -- --forceExit --coverage --verbose",
     "typeorm": "npm run cli -- node_modules/.bin/typeorm",
-    "typeorm:dev": "npm run cli:dev -- node_modules/.bin/typeorm"
+    "typeorm:dev": "npm run cli:dev -- node_modules/.bin/typeorm",
+    "heroku-postbuild": "npm run build"
   },
   "author": "Tomasz Romik",
   "license": "MIT",
