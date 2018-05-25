@@ -4,7 +4,7 @@ module.exports = {
       tsConfigFile: './tsconfig.build.json',
     },
   },
-  moduleFileExtensions: ['js', 'ts', 'jsx', 'tsx'],
+  moduleFileExtensions: ['js', 'ts', 'jsx', 'tsx', 'json'],
   transform: {
     '^.+\\.tsx?$': './node_modules/ts-jest/preprocessor.js',
   },
