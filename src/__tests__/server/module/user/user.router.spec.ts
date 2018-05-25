@@ -1,7 +1,7 @@
 import request, { SuperTest, Test } from 'supertest';
+import { Application } from 'express';
 import createApp from '@server/createApp';
 import User from '@server/module/user/user.model';
-import { Application } from 'express';
 import createJWT from '@server/utils/createJWT';
 
 describe('/api/users', () => {
@@ -56,6 +56,7 @@ describe('/api/users', () => {
       expect(response.body).toEqual({
         success: true,
         token: expect.any(String),
+        user: expect.objectContaining({ email: user.email }),
       });
       expect(response.status).toEqual(200);
     });

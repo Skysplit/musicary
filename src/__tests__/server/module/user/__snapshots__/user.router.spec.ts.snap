@@ -2,18 +2,27 @@
 
 exports[`/api/users POST /login when no credentials are provided should display missing credentials 1`] = `
 Object {
-  "message": "Missing credentials",
+  "errors": Object {
+    "email": "Missing credentials",
+    "password": "Missing credentials",
+  },
 }
 `;
 
 exports[`/api/users POST /login when wrong email is provided should display wrong credentials 1`] = `
 Object {
-  "message": "Incorrect credentials",
+  "errors": Object {
+    "email": "Incorrect credentials",
+    "password": "Incorrect credentials",
+  },
 }
 `;
 
 exports[`/api/users POST /login when wrong password is provided should display wrong credentials 1`] = `
 Object {
-  "message": "Incorrect credentials",
+  "errors": Object {
+    "email": "Incorrect credentials",
+    "password": "Incorrect credentials",
+  },
 }
 `;
