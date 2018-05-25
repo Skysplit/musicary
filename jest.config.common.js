@@ -22,5 +22,6 @@ module.exports = {
     '!src/server/{database,index}.ts',
     '!src/{bootstrap,next}/**/*',
     '!{ormconfig,next.config}.js',
+    '!**/*.d.ts',
   ],
 }
