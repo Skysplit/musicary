@@ -24,4 +24,5 @@ module.exports = {
     '!{ormconfig,next.config}.js',
     '!**/*.d.ts',
   ],
+  coverageReporters: ['lcov', 'json'],
 }

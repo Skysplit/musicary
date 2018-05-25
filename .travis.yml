@@ -19,6 +19,8 @@ before_script:
   - ./cc-test-reporter before-build
 
 after_script:
+  - node_modules/.bin/istanbul report lcov json clover text
+  - rm -rf coverage/client coverage/server
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
 
 env:

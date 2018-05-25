@@ -12,5 +12,6 @@ module.exports = {
   collectCoverageFrom: [
     ...config.collectCoverageFrom,
     '!src/{server}/**/*',
-  ]
+  ],
+  coverageDirectory: './coverage/client',
 }
