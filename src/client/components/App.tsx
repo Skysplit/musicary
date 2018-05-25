@@ -7,7 +7,7 @@ import { removeUser } from '@app/client/utils/userData';
 import Router from '@next/router';
 
 export interface AppProps extends AppContainerProps {
-  user: UserInterface;
+  user: UserInterface | null;
 }
 
 export default class App extends PureComponent<AppProps> {

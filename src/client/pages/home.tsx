@@ -1,4 +1,4 @@
-import { PureComponent } from 'react';
+import React, { PureComponent } from 'react';
 import { Card, CardTitle } from 'react-md';
 
 export default class IndexPage extends PureComponent {

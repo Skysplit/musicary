@@ -1,4 +1,4 @@
-import { PureComponent, MouseEvent } from 'react';
+import React, { PureComponent, MouseEvent } from 'react';
 import { PlaylistInterface } from '@client/store/playlist';
 import { Grid, Cell, Button } from 'react-md';
 import Link from '@next/link';
@@ -39,10 +39,22 @@ export default class PlaylistItem extends PureComponent<PlaylistItemProps> {
             </span>
           </Cell>
           <Cell phoneSize={1} tabletSize={2} desktopSize={1} style={{ textAlign: 'right' }}>
-            <Button icon primary onClick={this.handleEdit} disabled={removing}>
+            <Button
+              className="edit"
+              icon
+              primary
+              onClick={this.handleEdit}
+              disabled={removing}
+            >
               edit
             </Button>{' '}
-            <Button icon secondary onClick={this.handleRemove} disabled={removing}>
+            <Button
+              icon
+              secondary
+              onClick={this.handleRemove}
+              disabled={removing}
+              className="remove"
+            >
               delete
             </Button>
           </Cell>

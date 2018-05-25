@@ -9,4 +9,8 @@ module.exports = {
   testMatch: [
     '<rootDir>/src/__tests__/client/**/*.(test|spec).(ts|js|tsx|jsx)',
   ],
+  collectCoverageFrom: [
+    ...config.collectCoverageFrom,
+    '!src/{server}/**/*',
+  ]
 }

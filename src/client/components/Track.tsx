@@ -1,4 +1,4 @@
-import { PureComponent, MouseEvent } from 'react';
+import React, { PureComponent, MouseEvent } from 'react';
 import { ListItem, FontIcon } from 'react-md';
 import { TrackInterface } from '@client/store/track';
 import { PlaylistInterface } from '@client/store/playlist';

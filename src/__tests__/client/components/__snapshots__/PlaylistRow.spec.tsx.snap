@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<PlaylistRow /> should render form component 1`] = `
+<PlaylistFormContainer
+  onCancel={[Function]}
+  onSave={[Function]}
+  onSaved={[Function]}
+  playlist={
+    Object {
+      "id": 1,
+      "name": "test",
+    }
+  }
+/>
+`;
+
+exports[`<PlaylistRow /> should render item component 1`] = `
+<PlaylistItem
+  onEdit={[Function]}
+  onRemove={[Function]}
+  playlist={
+    Object {
+      "id": 1,
+      "name": "test",
+    }
+  }
+  removing={true}
+/>
+`;

@@ -1,4 +1,4 @@
-import { SFC } from 'react';
+import React, { SFC } from 'react';
 import PlaylistItem from '@client/components/PlaylistItem';
 import PlaylistFormContainer from '@client/containers/PlaylistFormContainer';
 import { PlaylistRowContainerProps } from '@client/containers/PlaylistRowContainer';

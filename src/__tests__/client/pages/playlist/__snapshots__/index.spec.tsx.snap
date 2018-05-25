@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`pages/home should render component 1`] = `<Connect(PlaylistsListContainer) />`;
+
+exports[`pages/home should render error page 1`] = `
+<Error
+  statusCode={401}
+/>
+`;

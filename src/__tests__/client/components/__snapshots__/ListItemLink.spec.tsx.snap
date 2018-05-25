@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ListItemLink /> should render component 1`] = `
+<LinkRoutes
+  passHref={true}
+  prefetch={true}
+  route="test"
+  shallow={true}
+>
+  <div
+    propsToDiv="propInDiv"
+  >
+    <span>
+      test
+    </span>
+  </div>
+</LinkRoutes>
+`;

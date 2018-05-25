@@ -1,0 +1,82 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<PlaylistItem /> should render component 1`] = `
+<LinkRoutes
+  params={
+    Object {
+      "id": 1,
+    }
+  }
+  route="playlist"
+>
+  <Grid
+    component="div"
+    gutter={0}
+    noSpacing={true}
+    spacing={0}
+    stacked={false}
+    style={
+      Object {
+        "cursor": "pointer",
+      }
+    }
+  >
+    <Cell
+      align="middle"
+      component="div"
+      desktopHidden={false}
+      desktopSize={11}
+      phoneHidden={false}
+      phoneSize={3}
+      tabletHidden={false}
+      tabletSize={6}
+    >
+      <span
+        className="md-title"
+      >
+        playlistName
+      </span>
+    </Cell>
+    <Cell
+      component="div"
+      desktopHidden={false}
+      desktopSize={1}
+      phoneHidden={false}
+      phoneSize={1}
+      style={
+        Object {
+          "textAlign": "right",
+        }
+      }
+      tabletHidden={false}
+      tabletSize={2}
+    >
+      <withInk(withTooltip(Button))
+        className="edit"
+        disabled={false}
+        icon={true}
+        inkTransitionEnterTimeout={450}
+        inkTransitionLeaveTimeout={300}
+        inkTransitionOverlap={150}
+        onClick={[Function]}
+        primary={true}
+      >
+        edit
+      </withInk(withTooltip(Button))>
+       
+      <withInk(withTooltip(Button))
+        className="remove"
+        disabled={false}
+        icon={true}
+        inkTransitionEnterTimeout={450}
+        inkTransitionLeaveTimeout={300}
+        inkTransitionOverlap={150}
+        onClick={[Function]}
+        secondary={true}
+      >
+        delete
+      </withInk(withTooltip(Button))>
+    </Cell>
+  </Grid>
+</LinkRoutes>
+`;
