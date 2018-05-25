@@ -1,11 +1,23 @@
 const path = require('path');
 
+const {
+  NODE_ENV,
+  TYPEORM_HOST,
+  TYPEORM_DATABASE,
+  TYPEORM_USERNAME,
+  TYPEORM_PASSWORD,
+  TYPEORM_PORT,
+} = process.env;
+
 const env = process.env.NODE_ENV || 'production';
 
 const commonConfig = {
   name: 'default',
-  username: process.env.TYPEORM_USERNAME,
-  password: process.env.TYPEORM_PASSWORD,
+  type: 'mysql',
+  host: TYPEORM_HOST || 'localhost',
+  username: TYPEORM_USERNAME || 'root',
+  password: TYPEORM_PASSWORD || '',
+  port: TYPEORM_PORT || 3306,
   migrationsRun: true,
   cli: {
     migrationsDir: 'src/server/migration',
@@ -15,9 +27,7 @@ const commonConfig = {
 
 const productionConfig = {
   ...commonConfig,
-  type: 'mysql',
-  host: 'localhost',
-  database: 'nodetech_production',
+  database: TYPEORM_DATABASE || 'nodetech_production',
   entities: ['dist/server/module/**/*.model.js'],
   migrations: ['dist/server/migration/**/*.js'],
   subscribers: ['dist/server/subscriber/**/*.js'],
@@ -26,9 +36,7 @@ const productionConfig = {
 const developmentConfig = {
   ...commonConfig,
   logging: true,
-  type: 'mysql',
-  host: 'localhost',
-  database: 'nodetech_development',
+  database: TYPEORM_DATABASE || 'nodetech_development',
   entities: ['src/server/module/**/*.model.ts'],
   migrations: ['src/server/migration/**/*.ts'],
   subscribers: ['src/server/subscriber/**/*.ts'],
@@ -37,10 +45,9 @@ const developmentConfig = {
 
 const testingConfig = {
   ...developmentConfig,
+  database: TYPEORM_DATABASE || 'nodetech_testing',
   migrationsRun: false,
   logging: false,
-  type: 'mysql',
-  database: 'nodetech_testing',
 };
 
 const config = {
