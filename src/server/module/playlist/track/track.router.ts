@@ -30,10 +30,6 @@ router.get('/', async (req: PlaylistRequest, res) => {
   res.json(tracks);
 });
 
-router.put('/:id', async (req: TrackRequest, res) => {
-  res.send('Edit track');
-});
-
 router.post(
   '/',
   check('url.*')

@@ -1,4 +1,4 @@
-import { PureComponent, Fragment } from 'react';
+import React, { PureComponent, Fragment } from 'react';
 import { Divider, Card, CardTitle, CardText } from 'react-md';
 import { isEmpty } from 'lodash';
 import { PlaylistInterface } from '@client/store/playlist';

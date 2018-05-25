@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Track /> should render component 1`] = `
+<ListItem
+  active={true}
+  activeClassName="md-text--theme-primary"
+  animateNestedItems={true}
+  component="div"
+  expanderIcon={
+    <FontIcon
+      iconClassName="material-icons"
+    >
+      keyboard_arrow_down
+    </FontIcon>
+  }
+  itemComponent="li"
+  leftIcon={
+    <FontIcon
+      iconClassName="material-icons"
+    >
+      play_arrow
+    </FontIcon>
+  }
+  onClick={[Function]}
+  primaryText="TrackName"
+  rightIcon={null}
+/>
+`;
+
+exports[`<Track /> when track is not active should display different component state 1`] = `
+<ListItem
+  active={false}
+  activeClassName="md-text--theme-primary"
+  animateNestedItems={true}
+  component="div"
+  expanderIcon={
+    <FontIcon
+      iconClassName="material-icons"
+    >
+      keyboard_arrow_down
+    </FontIcon>
+  }
+  itemComponent="li"
+  leftIcon={null}
+  onClick={[Function]}
+  primaryText="TrackName"
+  rightIcon={
+    <FontIcon
+      iconClassName="material-icons"
+      onClick={[Function]}
+    >
+      delete
+    </FontIcon>
+  }
+/>
+`;

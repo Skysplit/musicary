@@ -1,4 +1,4 @@
-import { PureComponent } from 'react';
+import React, { PureComponent } from 'react';
 import { Card, CardText, CardTitle } from 'react-md';
 import LoginFormContainer from '@app/client/containers/LoginFormContainer';
 

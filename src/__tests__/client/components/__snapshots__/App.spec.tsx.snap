@@ -1,0 +1,180 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<App /> should render guest interface 1`] = `
+<NavigationDrawer
+  autoclose={true}
+  constantDrawerType={false}
+  contentComponent="main"
+  contentId="main-content"
+  defaultMedia="mobile"
+  desktopDrawerType="full-height"
+  desktopMinWidth={1025}
+  drawerTitle="Musicary"
+  drawerTransitionDuration={300}
+  extractMini={true}
+  includeDrawerHeader={true}
+  jumpLabel="Jump to content"
+  mobileDrawerType="temporary"
+  mobileMinWidth={320}
+  navItems={
+    Array [
+      <ListItem
+        activeClassName="md-text--theme-primary"
+        animateNestedItems={true}
+        component={[Function]}
+        expanderIcon={
+          <FontIcon
+            iconClassName="material-icons"
+          >
+            keyboard_arrow_down
+          </FontIcon>
+        }
+        itemComponent="li"
+        primaryText="Home"
+        route="home"
+      />,
+      <ListItem
+        activeClassName="md-text--theme-primary"
+        animateNestedItems={true}
+        component={[Function]}
+        expanderIcon={
+          <FontIcon
+            iconClassName="material-icons"
+          >
+            keyboard_arrow_down
+          </FontIcon>
+        }
+        itemComponent="li"
+        primaryText="Login"
+        route="login"
+      />,
+      <ListItem
+        activeClassName="md-text--theme-primary"
+        animateNestedItems={true}
+        component={[Function]}
+        expanderIcon={
+          <FontIcon
+            iconClassName="material-icons"
+          >
+            keyboard_arrow_down
+          </FontIcon>
+        }
+        itemComponent="li"
+        primaryText="Sign up"
+        route="signup"
+      />,
+    ]
+  }
+  persistentIcon={
+    <FontIcon
+      iconClassName="material-icons"
+    >
+      arrow_back
+    </FontIcon>
+  }
+  position="left"
+  tabletDrawerType="persistent"
+  tabletMinWidth={768}
+  temporaryIcon={
+    <FontIcon
+      iconClassName="material-icons"
+    >
+      menu
+    </FontIcon>
+  }
+  toolbarThemeType="colored"
+  toolbarTitle="Musicary"
+  transitionEnterTimeout={300}
+  transitionName="md-cross-fade"
+/>
+`;
+
+exports[`<App /> should render user interface 1`] = `
+<NavigationDrawer
+  autoclose={true}
+  constantDrawerType={false}
+  contentComponent="main"
+  contentId="main-content"
+  defaultMedia="mobile"
+  desktopDrawerType="full-height"
+  desktopMinWidth={1025}
+  drawerTitle="Musicary"
+  drawerTransitionDuration={300}
+  extractMini={true}
+  includeDrawerHeader={true}
+  jumpLabel="Jump to content"
+  mobileDrawerType="temporary"
+  mobileMinWidth={320}
+  navItems={
+    Array [
+      <ListItem
+        activeClassName="md-text--theme-primary"
+        animateNestedItems={true}
+        component={[Function]}
+        expanderIcon={
+          <FontIcon
+            iconClassName="material-icons"
+          >
+            keyboard_arrow_down
+          </FontIcon>
+        }
+        itemComponent="li"
+        primaryText="Home"
+        route="home"
+      />,
+      <ListItem
+        activeClassName="md-text--theme-primary"
+        animateNestedItems={true}
+        component={[Function]}
+        expanderIcon={
+          <FontIcon
+            iconClassName="material-icons"
+          >
+            keyboard_arrow_down
+          </FontIcon>
+        }
+        itemComponent="li"
+        primaryText="My playlists"
+        route="playlists"
+      />,
+      <Divider />,
+      <ListItem
+        activeClassName="md-text--theme-primary"
+        animateNestedItems={true}
+        component="div"
+        expanderIcon={
+          <FontIcon
+            iconClassName="material-icons"
+          >
+            keyboard_arrow_down
+          </FontIcon>
+        }
+        itemComponent="li"
+        onClick={[Function]}
+        primaryText="Log out"
+      />,
+    ]
+  }
+  persistentIcon={
+    <FontIcon
+      iconClassName="material-icons"
+    >
+      arrow_back
+    </FontIcon>
+  }
+  position="left"
+  tabletDrawerType="persistent"
+  tabletMinWidth={768}
+  temporaryIcon={
+    <FontIcon
+      iconClassName="material-icons"
+    >
+      menu
+    </FontIcon>
+  }
+  toolbarThemeType="colored"
+  toolbarTitle="Musicary"
+  transitionEnterTimeout={300}
+  transitionName="md-cross-fade"
+/>
+`;

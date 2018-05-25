@@ -1,0 +1,145 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<PlaylistView /> should render component 1`] = `
+<React.Fragment>
+  <Card
+    animate={true}
+    expanderIcon={
+      <FontIcon
+        iconClassName="material-icons"
+      >
+        keyboard_arrow_down
+      </FontIcon>
+    }
+    expanderTooltipPosition="left"
+  >
+    <CardTitle
+      title="test"
+    />
+    <CardText
+      component="section"
+    >
+      <Tracklist
+        playlist={
+          Object {
+            "id": 1,
+            "name": "test",
+          }
+        }
+        tracks={
+          Array [
+            Object {
+              "id": 1,
+              "name": "test",
+            },
+          ]
+        }
+      />
+    </CardText>
+  </Card>
+  <Divider
+    style={
+      Object {
+        "margin": "10px 0",
+      }
+    }
+  />
+  <Card
+    animate={true}
+    expanderIcon={
+      <FontIcon
+        iconClassName="material-icons"
+      >
+        keyboard_arrow_down
+      </FontIcon>
+    }
+    expanderTooltipPosition="left"
+  >
+    <CardTitle
+      title="Add tracks"
+    />
+    <CardText
+      component="section"
+    >
+      <TrackFormContainer
+        playlist={
+          Object {
+            "id": 1,
+            "name": "test",
+          }
+        }
+      />
+    </CardText>
+  </Card>
+</React.Fragment>
+`;
+
+exports[`<PlaylistView /> when tracks are missing should render message 1`] = `
+<React.Fragment>
+  <Card
+    animate={true}
+    expanderIcon={
+      <FontIcon
+        iconClassName="material-icons"
+      >
+        keyboard_arrow_down
+      </FontIcon>
+    }
+    expanderTooltipPosition="left"
+  >
+    <CardTitle
+      title="test"
+    />
+    <CardText
+      component="section"
+    >
+      <h2>
+        You do not have any tracks on this playlist yet
+      </h2>
+      <Tracklist
+        playlist={
+          Object {
+            "id": 1,
+            "name": "test",
+          }
+        }
+        tracks={Array []}
+      />
+    </CardText>
+  </Card>
+  <Divider
+    style={
+      Object {
+        "margin": "10px 0",
+      }
+    }
+  />
+  <Card
+    animate={true}
+    expanderIcon={
+      <FontIcon
+        iconClassName="material-icons"
+      >
+        keyboard_arrow_down
+      </FontIcon>
+    }
+    expanderTooltipPosition="left"
+  >
+    <CardTitle
+      title="Add tracks"
+    />
+    <CardText
+      component="section"
+    >
+      <TrackFormContainer
+        playlist={
+          Object {
+            "id": 1,
+            "name": "test",
+          }
+        }
+      />
+    </CardText>
+  </Card>
+</React.Fragment>
+`;

@@ -1,4 +1,4 @@
-import { PureComponent, Fragment } from 'react';
+import React, { PureComponent, Fragment } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect, Dispatch } from 'react-redux';
 import { Request } from 'express';

@@ -34,4 +34,13 @@ export default class Track extends BaseEntity implements TrackInterface {
 
   @ManyToMany(type => Playlist, playlist => playlist.tracks)
   playlists: Playlist[];
+
+  toJSON() {
+    return {
+      id: this.id,
+      name: this.name,
+      sourceId: this.sourceId,
+      sourceType: this.sourceType,
+    };
+  }
 }

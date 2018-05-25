@@ -1,4 +1,4 @@
-import { PureComponent } from 'react';
+import React, { PureComponent } from 'react';
 import { Card, CardTitle, CardText } from 'react-md';
 import SignupFormContainer from '@client/containers/SignupFormContainer';
 

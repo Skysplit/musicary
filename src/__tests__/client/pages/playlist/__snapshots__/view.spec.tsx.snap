@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<PlaylistsViewPage /> should render component 1`] = `
+<React.Fragment>
+  <Connect(PlaylistView)
+    playlistId={1}
+  />
+  <SnackbarContainer
+    autohide={true}
+    autohideTimeout={2000}
+    onDismiss={[Function]}
+    toasts={Array []}
+    transitionEnterTimeout={300}
+    transitionLeaveTimeout={300}
+    transitionName="md-snackbar"
+  />
+</React.Fragment>
+`;

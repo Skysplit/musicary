@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`pages/home should render component 1`] = `
+exports[`<LoginPage /> should render page 1`] = `
 <Card
   animate={true}
   expanderIcon={
@@ -13,7 +13,12 @@ exports[`pages/home should render component 1`] = `
   expanderTooltipPosition="left"
 >
   <CardTitle
-    title="Welcome to musicary"
+    title="Login"
   />
+  <CardText
+    component="section"
+  >
+    <Connect(LoginFormContainer) />
+  </CardText>
 </Card>
 `;
