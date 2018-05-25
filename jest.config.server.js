@@ -8,4 +8,8 @@ module.exports = {
   testMatch: [
     '<rootDir>/src/__tests__/server/**/*.(test|spec).(ts|js)',
   ],
+  collectCoverageFrom: [
+    ...config.collectCoverageFrom,
+    '!src/{client,next}/**/*',
+  ]
 }
