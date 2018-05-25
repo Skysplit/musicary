@@ -28,8 +28,7 @@ describe('pages/home', () => {
       playlists: ['playlist1', 'playlist2'],
     };
 
-    const wrapper = shallow(<PlaylistsPage {...props} />);
-
+    shallow(<PlaylistsPage {...props} />);
     expect(props.fetchPlaylistsSuccess).toHaveBeenCalledWith(props.playlists);
   });
 });

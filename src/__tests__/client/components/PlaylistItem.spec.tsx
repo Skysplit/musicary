@@ -15,7 +15,7 @@ describe('<PlaylistItem />', () => {
     const wrapper = shallow(<PlaylistItem {...props} />);
     const event = { stopPropagation: jest.fn() };
 
-    window.confirm = jest.fn(() => true)
+    window.confirm = jest.fn(() => true);
 
     wrapper.find('.edit').simulate('click', event);
     wrapper.find('.remove').simulate('click', event);
